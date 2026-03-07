@@ -1,0 +1,82 @@
+# Intent routing policy for JARVIS
+# Determines which requests can be handled locally vs requiring cloud reasoning
+
+# Tasks that can be handled with local routing
+local_capable:
+  # System operations
+  - open_app
+  - close_app
+  - search_files
+  - get_system_info
+  - get_time
+  - get_date
+  - set_volume
+  - screenshot
+  
+  # Browser simple ops
+  - open_url
+  - navigate_to
+  
+  # Memory operations
+  - remember_fact
+  - recall_fact
+  
+  # Simple Q&A (with RAG)
+  - simple_qa
+  - what_is_my
+  - tell_me_about_stored
+  
+# Tasks requiring cloud reasoning
+cloud_required:
+  # Complex multi-step planning
+  - complex_task_planning
+  - multi_app_workflow
+  - conditional_automation
+  
+  # Deep reasoning
+  - explain_complex_concept
+  - analyze_document
+  - summarize_long_text
+  - compare_options
+  
+  # Creative generation
+  - write_email
+  - write_document
+  - generate_ideas
+  - code_generation
+  
+# Intent classification rules (keyword-based fallback)
+intent_keywords:
+  open_app:
+    - "open"
+    - "launch"
+    - "start"
+    - "run"
+    
+  search_files:
+    - "search"
+    - "find"
+    - "look for"
+    - "where is"
+    
+  navigate_to:
+    - "go to"
+    - "navigate"
+    - "visit"
+    
+  remember_fact:
+    - "remember"
+    - "save"
+    - "note that"
+    
+  simple_qa:
+    - "what is"
+    - "who is"
+    - "when is"
+    - "where is"
+    
+# Confidence thresholds
+thresholds:
+  local_routing_confidence: 0.7
+  cloud_fallback_confidence: 0.5
+  clarification_required: 0.5

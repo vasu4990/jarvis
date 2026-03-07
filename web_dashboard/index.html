@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JARVIS Control Dashboard</title>
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;900&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="logo">
+                <i class="fas fa-brain"></i>
+                <h1>J.A.R.V.I.S.</h1>
+                <span class="version">v1.0 MVP</span>
+            </div>
+            <div class="system-status">
+                <div class="status-item">
+                    <span class="status-label">System:</span>
+                    <span class="status-value" id="system-status">
+                        <i class="fas fa-circle status-indicator"></i>
+                        <span>Connecting...</span>
+                    </span>
+                </div>
+                <div class="status-item">
+                    <span class="status-label">Uptime:</span>
+                    <span class="status-value" id="uptime">00:00:00</span>
+                </div>
+                <div class="status-item">
+                    <span class="status-label">Mode:</span>
+                    <span class="status-value" id="mode">Hybrid</span>
+                </div>
+            </div>
+            <div class="header-actions">
+                <button class="btn-icon" id="settings-btn" title="Settings">
+                    <i class="fas fa-cog"></i>
+                </button>
+                <button class="btn-icon" id="fullscreen-btn" title="Fullscreen">
+                    <i class="fas fa-expand"></i>
+                </button>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Sidebar Navigation -->
+            <nav class="sidebar">
+                <ul class="nav-menu">
+                    <li class="nav-item active" data-page="dashboard">
+                        <i class="fas fa-home"></i>
+                        <span>Dashboard</span>
+                    </li>
+                    <li class="nav-item" data-page="commands">
+                        <i class="fas fa-terminal"></i>
+                        <span>Commands</span>
+                    </li>
+                    <li class="nav-item" data-page="memory">
+                        <i class="fas fa-database"></i>
+                        <span>Memory</span>
+                    </li>
+                    <li class="nav-item" data-page="tools">
+                        <i class="fas fa-tools"></i>
+                        <span>Tools</span>
+                    </li>
+                    <li class="nav-item" data-page="logs">
+                        <i class="fas fa-list"></i>
+                        <span>Logs</span>
+                    </li>
+                    <li class="nav-item" data-page="hardware">
+                        <i class="fas fa-microchip"></i>
+                        <span>Hardware</span>
+                    </li>
+                    <li class="nav-item" data-page="agi">
+                        <i class="fas fa-brain"></i>
+                        <span>AGI Research</span>
+                    </li>
+                </ul>
+            </nav>
+
+            <!-- Content Area -->
+            <main class="content">
+                <!-- Dashboard Page -->
+                <div class="page active" id="dashboard-page">
+                    <h2 class="page-title">System Overview</h2>
+                    
+                    <!-- Stats Grid -->
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-icon blue">
+                                <i class="fas fa-microphone"></i>
+                            </div>
+                            <div class="stat-info">
+                                <h3>Voice Commands</h3>
+                                <p class="stat-value" id="voice-count">0</p>
+                                <span class="stat-change positive">+12 today</span>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon green">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <div class="stat-info">
+                                <h3>Success Rate</h3>
+                                <p class="stat-value" id="success-rate">98.5%</p>
+                                <span class="stat-change positive">+2.1%</span>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon orange">
+                                <i class="fas fa-cogs"></i>
+                            </div>
+                            <div class="stat-info">
+                                <h3>Active Tools</h3>
+                                <p class="stat-value" id="active-tools">8</p>
+                                <span class="stat-change">PowerShell, Playwright</span>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon purple">
+                                <i class="fas fa-memory"></i>
+                            </div>
+                            <div class="stat-info">
+                                <h3>Memory Items</h3>
+                                <p class="stat-value" id="memory-items">247</p>
+                                <span class="stat-change">Vector DB: 247</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Activity Grid -->
+                    <div class="activity-grid">
+                        <!-- Real-time Activity Feed -->
+                        <div class="card activity-card">
+                            <div class="card-header">
+                                <h3>Real-time Activity</h3>
+                                <button class="btn-small" id="clear-activity">Clear</button>
+                            </div>
+                            <div class="activity-feed" id="activity-feed">
+                                <div class="activity-item system">
+                                    <i class="fas fa-circle-notch fa-spin"></i>
+                                    <div class="activity-content">
+                                        <span class="activity-title">System Initialization</span>
+                                        <span class="activity-time">Just now</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- System Resources -->
+                        <div class="card">
+                            <div class="card-header">
+                                <h3>System Resources</h3>
+                            </div>
+                            <div class="resource-metrics">
+                                <div class="metric">
+                                    <div class="metric-label">
+                                        <span>CPU Usage</span>
+                                        <span class="metric-value" id="cpu-usage">23%</span>
+                                    </div>
+                                    <div class="progress-bar">
+                                        <div class="progress-fill blue" style="width: 23%"></div>
+                                    </div>
+                                </div>
+                                <div class="metric">
+                                    <div class="metric-label">
+                                        <span>Memory</span>
+                                        <span class="metric-value" id="memory-usage">4.2 / 16 GB</span>
+                                    </div>
+                                    <div class="progress-bar">
+                                        <div class="progress-fill green" style="width: 26%"></div>
+                                    </div>
+                                </div>
+                                <div class="metric">
+                                    <div class="metric-label">
+                                        <span>GPU</span>
+                                        <span class="metric-value" id="gpu-usage">12%</span>
+                                    </div>
+                                    <div class="progress-bar">
+                                        <div class="progress-fill purple" style="width: 12%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Quick Actions -->
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Quick Actions</h3>
+                        </div>
+                        <div class="quick-actions">
+                            <button class="action-btn" data-command="open chrome">
+                                <i class="fab fa-chrome"></i>
+                                <span>Open Chrome</span>
+                            </button>
+                            <button class="action-btn" data-command="what time is it">
+                                <i class="fas fa-clock"></i>
+                                <span>Get Time</span>
+                            </button>
+                            <button class="action-btn" data-command="take screenshot">
+                                <i class="fas fa-camera"></i>
+                                <span>Screenshot</span>
+                            </button>
+                            <button class="action-btn" data-command="system info">
+                                <i class="fas fa-info-circle"></i>
+                                <span>System Info</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Commands Page -->
+                <div class="page" id="commands-page">
+                    <h2 class="page-title">Command Interface</h2>
+                    
+                    <div class="card">
+                        <div class="command-input-section">
+                            <div class="input-group">
+                                <button class="btn-voice" id="voice-input-btn">
+                                    <i class="fas fa-microphone"></i>
+                                </button>
+                                <input type="text" id="command-input" placeholder="Type a command or click the microphone..." class="command-input">
+                                <button class="btn-send" id="send-command-btn">
+                                    <i class="fas fa-paper-plane"></i>
+                                </button>
+                            </div>
+                            <div class="input-status" id="input-status">Ready to receive commands</div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Command History</h3>
+                            <button class="btn-small" id="clear-history">Clear History</button>
+                        </div>
+                        <div class="command-history" id="command-history">
+                            <div class="history-item">
+                                <div class="history-command">
+                                    <i class="fas fa-user"></i>
+                                    <span>Open Chrome</span>
+                                </div>
+                                <div class="history-response">
+                                    <i class="fas fa-robot"></i>
+                                    <span>Opening Chrome browser...</span>
+                                </div>
+                                <div class="history-time">2 minutes ago</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Common Commands</h3>
+                        </div>
+                        <div class="command-examples">
+                            <div class="command-category">
+                                <h4>System Control</h4>
+                                <ul>
+                                    <li><code>open [application]</code> - Launch applications</li>
+                                    <li><code>close [application]</code> - Close applications</li>
+                                    <li><code>system info</code> - Display system information</li>
+                                    <li><code>take screenshot</code> - Capture screen</li>
+                                </ul>
+                            </div>
+                            <div class="command-category">
+                                <h4>Browser Control</h4>
+                                <ul>
+                                    <li><code>go to [website]</code> - Navigate to URL</li>
+                                    <li><code>search for [query]</code> - Google search</li>
+                                    <li><code>close tab</code> - Close current tab</li>
+                                </ul>
+                            </div>
+                            <div class="command-category">
+                                <h4>Memory</h4>
+                                <ul>
+                                    <li><code>remember [fact]</code> - Store information</li>
+                                    <li><code>what is [query]</code> - Retrieve information</li>
+                                    <li><code>search memory for [query]</code> - Search stored data</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Other pages will be loaded dynamically -->
+                <div class="page" id="memory-page">
+                    <h2 class="page-title">Memory System</h2>
+                    <p class="page-description">Vector database and relational storage</p>
+                    <div class="coming-soon">
+                        <i class="fas fa-database"></i>
+                        <p>Memory browser coming soon...</p>
+                    </div>
+                </div>
+
+                <div class="page" id="tools-page">
+                    <h2 class="page-title">Tool Management</h2>
+                    <p class="page-description">Configure and monitor system tools</p>
+                    <div class="coming-soon">
+                        <i class="fas fa-tools"></i>
+                        <p>Tool configuration coming soon...</p>
+                    </div>
+                </div>
+
+                <div class="page" id="logs-page">
+                    <h2 class="page-title">System Logs</h2>
+                    <p class="page-description">Audit trail and debugging information</p>
+                    <div class="coming-soon">
+                        <i class="fas fa-list"></i>
+                        <p>Log viewer coming soon...</p>
+                    </div>
+                </div>
+
+                <div class="page" id="hardware-page">
+                    <h2 class="page-title">ESP32 Hardware</h2>
+                    <p class="page-description">MCU status and control</p>
+                    <div class="coming-soon">
+                        <i class="fas fa-microchip"></i>
+                        <p>Hardware monitor coming soon...</p>
+                    </div>
+                </div>
+
+                <div class="page" id="agi-page">
+                    <h2 class="page-title">AGI Research Portal</h2>
+                    <p class="page-description">Track progress on 5 research paths</p>
+                    <div class="card">
+                        <a href="agi_portal.html" class="btn-primary btn-large">
+                            <i class="fas fa-external-link-alt"></i>
+                            Open AGI Research Portal
+                        </a>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Connection Status Toast -->
+    <div class="toast" id="connection-toast">
+        <i class="fas fa-wifi"></i>
+        <span>Connecting to JARVIS backend...</span>
+    </div>
+
+    <script src="js/dashboard.js"></script>
+</body>
+</html>

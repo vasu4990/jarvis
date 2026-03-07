@@ -1,0 +1,644 @@
+/* ================================
+   Hardware Page Styles
+   ================================ */
+
+.hardware-options {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 40px;
+    margin-top: 60px;
+}
+
+.hardware-card {
+    background-color: var(--bg-card);
+    padding: 40px;
+    border-radius: var(--border-radius);
+    border: 2px solid var(--border-color);
+    text-align: center;
+    transition: var(--transition);
+    position: relative;
+}
+
+.hardware-card.featured {
+    border-color: var(--primary);
+    box-shadow: 0 0 30px rgba(14, 165, 233, 0.2);
+}
+
+.hardware-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-xl);
+}
+
+.hardware-badge {
+    position: absolute;
+    top: -15px;
+    right: 20px;
+    padding: 8px 20px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.hardware-badge.basic {
+    background: linear-gradient(135deg, #10b981, #059669);
+    color: white;
+}
+
+.hardware-badge.advanced {
+    background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+    color: white;
+}
+
+.hardware-price {
+    color: var(--text-muted);
+    font-size: 16px;
+    margin: 16px 0 24px;
+    font-weight: 600;
+}
+
+.hardware-features {
+    list-style: none;
+    padding: 0;
+    margin: 32px 0;
+    text-align: left;
+}
+
+.hardware-features li {
+    padding: 12px 0;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: var(--text-secondary);
+}
+
+.hardware-features i {
+    color: var(--success);
+    font-size: 18px;
+}
+
+.bom-table {
+    width: 100%;
+    background-color: var(--bg-card);
+    border-radius: var(--border-radius);
+    border-collapse: collapse;
+    overflow: hidden;
+    margin: 32px 0;
+}
+
+.bom-table thead {
+    background-color: var(--bg-tertiary);
+}
+
+.bom-table th {
+    padding: 16px;
+    text-align: left;
+    font-weight: 700;
+    color: var(--primary);
+    border-bottom: 2px solid var(--border-color);
+}
+
+.bom-table td {
+    padding: 14px 16px;
+    border-bottom: 1px solid var(--border-color);
+    color: var(--text-secondary);
+}
+
+.bom-table tr:last-child td {
+    border-bottom: none;
+}
+
+.bom-table tr:hover {
+    background-color: var(--bg-hover);
+}
+
+.wiring-diagram {
+    background-color: var(--bg-card);
+    padding: 32px;
+    border-radius: var(--border-radius);
+    border: 1px solid var(--border-color);
+    margin: 32px 0;
+}
+
+.wiring-diagram pre {
+    background-color: var(--bg-primary);
+    padding: 24px;
+    border-radius: 8px;
+    overflow-x: auto;
+    font-size: 13px;
+    line-height: 1.8;
+}
+
+.build-steps {
+    margin-top: 48px;
+}
+
+.step-card {
+    display: flex;
+    gap: 24px;
+    align-items: flex-start;
+    margin-bottom: 32px;
+    padding: 24px;
+    background-color: var(--bg-card);
+    border-radius: var(--border-radius);
+    border: 1px solid var(--border-color);
+    transition: var(--transition);
+}
+
+.step-card:hover {
+    border-color: var(--primary);
+    transform: translateX(4px);
+}
+
+.step-num {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    font-weight: 800;
+    color: white;
+    flex-shrink: 0;
+}
+
+.step-content h4 {
+    font-size: 20px;
+    margin-bottom: 8px;
+}
+
+.step-content p {
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+.step-content .warning {
+    background-color: rgba(245, 158, 11, 0.1);
+    border-left: 4px solid var(--warning);
+    padding: 12px 16px;
+    margin-top: 12px;
+    border-radius: 6px;
+    color: var(--warning);
+    font-size: 14px;
+}
+
+.warning-box {
+    background-color: rgba(239, 68, 68, 0.1);
+    border: 2px solid var(--danger);
+    border-radius: var(--border-radius);
+    padding: 32px;
+    margin: 40px 0;
+    display: flex;
+    gap: 20px;
+}
+
+.warning-box i {
+    font-size: 48px;
+    color: var(--danger);
+    flex-shrink: 0;
+}
+
+.warning-box h4 {
+    color: var(--danger);
+    margin-bottom: 12px;
+}
+
+.warning-box ul {
+    margin: 12px 0;
+    padding-left: 20px;
+}
+
+.feature-box {
+    background-color: var(--bg-card);
+    padding: 24px;
+    border-radius: var(--border-radius);
+    border: 1px solid var(--border-color);
+}
+
+.feature-box h4 {
+    font-size: 18px;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.feature-box i {
+    color: var(--primary);
+}
+
+.feature-box p {
+    color: var(--text-secondary);
+    margin-bottom: 16px;
+    font-size: 14px;
+}
+
+.feature-box code {
+    display: block;
+    background-color: var(--bg-tertiary);
+    padding: 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    line-height: 1.8;
+}
+
+.firmware-steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 32px;
+    margin: 40px 0;
+}
+
+.firmware-card {
+    background-color: var(--bg-card);
+    padding: 32px;
+    border-radius: var(--border-radius);
+    border: 1px solid var(--border-color);
+}
+
+.firmware-card h3 {
+    font-size: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.firmware-card i {
+    color: var(--primary);
+}
+
+.firmware-card pre {
+    background-color: var(--bg-tertiary);
+    padding: 20px;
+    border-radius: 8px;
+    overflow-x: auto;
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+.test-table {
+    width: 100%;
+    background-color: var(--bg-card);
+    border-radius: var(--border-radius);
+    border-collapse: collapse;
+    overflow: hidden;
+    margin: 32px 0;
+}
+
+.test-table thead {
+    background-color: var(--bg-tertiary);
+}
+
+.test-table th {
+    padding: 16px;
+    text-align: left;
+    font-weight: 700;
+    color: var(--primary);
+    border-bottom: 2px solid var(--border-color);
+}
+
+.test-table td {
+    padding: 14px 16px;
+    border-bottom: 1px solid var(--border-color);
+    color: var(--text-secondary);
+}
+
+.test-table tr:hover {
+    background-color: var(--bg-hover);
+}
+
+/* ================================
+   Code Library Styles
+   ================================ */
+
+.code-category {
+    background-color: var(--bg-card);
+    padding: 32px;
+    border-radius: var(--border-radius);
+    border: 1px solid var(--border-color);
+    margin-bottom: 32px;
+}
+
+.code-category h3 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.code-snippets {
+    display: grid;
+    gap: 24px;
+}
+
+.code-snippet {
+    background-color: var(--bg-tertiary);
+    padding: 24px;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+}
+
+.code-snippet-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.code-snippet-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--primary);
+}
+
+.code-copy-btn {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    color: var(--text-secondary);
+}
+
+.code-copy-btn:hover {
+    background-color: var(--primary);
+    color: white;
+    border-color: var(--primary);
+}
+
+.code-snippet pre {
+    background-color: var(--bg-primary);
+    padding: 20px;
+    border-radius: 6px;
+    overflow-x: auto;
+    margin: 0;
+}
+
+.code-snippet-desc {
+    color: var(--text-secondary);
+    font-size: 14px;
+    margin-bottom: 16px;
+}
+
+.code-filter {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+}
+
+.filter-btn {
+    padding: 10px 20px;
+    border-radius: 8px;
+    background-color: var(--bg-tertiary);
+    border: 1px solid var(--border-color);
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: var(--transition);
+    font-weight: 600;
+}
+
+.filter-btn.active,
+.filter-btn:hover {
+    background-color: var(--primary);
+    color: white;
+    border-color: var(--primary);
+}
+
+/* ================================
+   Roadmap Styles
+   ================================ */
+
+.roadmap-timeline {
+    position: relative;
+    padding: 40px 0;
+}
+
+.roadmap-timeline:before {
+    content: '';
+    position: absolute;
+    left: 30px;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: linear-gradient(180deg, var(--primary), var(--secondary));
+    border-radius: 2px;
+}
+
+.roadmap-phase {
+    position: relative;
+    padding-left: 80px;
+    margin-bottom: 60px;
+}
+
+.roadmap-marker {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    font-weight: 800;
+    color: white;
+    border: 4px solid var(--bg-primary);
+}
+
+.roadmap-content {
+    background-color: var(--bg-card);
+    padding: 32px;
+    border-radius: var(--border-radius);
+    border: 1px solid var(--border-color);
+}
+
+.roadmap-content h3 {
+    font-size: 24px;
+    margin-bottom: 12px;
+}
+
+.roadmap-meta {
+    display: flex;
+    gap: 24px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.roadmap-duration,
+.roadmap-difficulty {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    color: var(--text-secondary);
+}
+
+.milestone-list {
+    list-style: none;
+    padding: 0;
+    margin-top: 20px;
+}
+
+.milestone-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px;
+    margin-bottom: 8px;
+    background-color: var(--bg-tertiary);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.milestone-item:hover {
+    background-color: var(--bg-hover);
+}
+
+.milestone-checkbox {
+    width: 24px;
+    height: 24px;
+    border: 2px solid var(--border-color);
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: var(--transition);
+}
+
+.milestone-item.completed .milestone-checkbox {
+    background-color: var(--success);
+    border-color: var(--success);
+}
+
+.milestone-item.completed .milestone-checkbox:after {
+    content: '✓';
+    color: white;
+    font-weight: bold;
+}
+
+.milestone-item.completed {
+    opacity: 0.6;
+}
+
+.milestone-text {
+    flex: 1;
+    color: var(--text-secondary);
+}
+
+.milestone-item.completed .milestone-text {
+    text-decoration: line-through;
+}
+
+/* ================================
+   FAQ Styles
+   ================================ */
+
+.faq-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
+    margin-top: 40px;
+}
+
+.faq-card {
+    background-color: var(--bg-card);
+    padding: 28px;
+    border-radius: var(--border-radius);
+    border: 1px solid var(--border-color);
+    transition: var(--transition);
+}
+
+.faq-card:hover {
+    border-color: var(--primary);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
+
+.faq-card h3 {
+    font-size: 18px;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    color: var(--primary);
+}
+
+.faq-card i {
+    color: var(--primary);
+    font-size: 20px;
+    flex-shrink: 0;
+}
+
+.faq-card p {
+    color: var(--text-secondary);
+    line-height: 1.6;
+    font-size: 14px;
+}
+
+.faq-item {
+    margin: 24px 0;
+}
+
+.faq-item h4 {
+    font-size: 18px;
+    margin-bottom: 12px;
+    color: var(--text-primary);
+}
+
+.faq-item p {
+    color: var(--text-secondary);
+    margin-bottom: 12px;
+}
+
+@media (max-width: 768px) {
+    .hardware-options {
+        grid-template-columns: 1fr;
+    }
+    
+    .bom-table {
+        font-size: 13px;
+    }
+    
+    .bom-table th,
+    .bom-table td {
+        padding: 10px;
+    }
+    
+    .step-card {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    
+    .roadmap-timeline:before {
+        left: 15px;
+    }
+    
+    .roadmap-marker {
+        width: 40px;
+        height: 40px;
+        font-size: 18px;
+    }
+    
+    .roadmap-phase {
+        padding-left: 60px;
+    }
+    
+    .faq-grid {
+        grid-template-columns: 1fr;
+    }
+}

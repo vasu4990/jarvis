@@ -1,0 +1,14 @@
+# Simple Voice Assistant - Dependencies
+
+# Core
+SpeechRecognition>=3.10.0
+pyttsx3>=2.90
+
+# Whisper (optional, for better STT)
+openai-whisper>=20231117
+
+# Audio
+pyaudio>=0.2.14
+
+# Optional utilities
+nircmd  # For Windows volume control (download separately)

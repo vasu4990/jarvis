@@ -1,0 +1,71 @@
+# Core dependencies
+openai>=1.12.0
+anthropic>=0.18.0
+
+# Speech processing
+openai-whisper>=20231117
+faster-whisper>=0.10.0
+pyaudio>=0.2.14
+webrtcvad>=2.0.10
+soundfile>=0.12.1
+sounddevice>=0.4.6
+
+# NLP & embeddings
+sentence-transformers>=2.3.1
+torch>=2.1.0
+transformers>=4.36.0
+
+# Vector database
+chromadb>=0.4.22
+
+# Database
+sqlalchemy>=2.0.25
+alembic>=1.13.1
+
+# Web automation
+playwright>=1.41.0
+selenium>=4.17.0
+
+# GUI automation
+pyautogui>=0.9.54
+pywinauto>=0.6.8
+uiautomation>=2.0.18
+
+# TTS
+coqui-tts>=0.22.0
+pyttsx3>=2.90
+
+# Serial communication
+pyserial>=3.5
+
+# Hotkeys
+keyboard>=0.13.5
+pynput>=1.7.6
+
+# UI
+pystray>=0.19.5
+pillow>=10.2.0
+tkinter-tooltip>=3.0.0
+
+# Utilities
+pydantic>=2.5.3
+pyyaml>=6.0.1
+python-dotenv>=1.0.0
+requests>=2.31.0
+aiohttp>=3.9.1
+websockets>=12.0
+
+# Logging & monitoring
+structlog>=24.1.0
+colorama>=0.4.6
+
+# Testing
+pytest>=7.4.4
+pytest-asyncio>=0.23.3
+pytest-mock>=3.12.0
+
+# Development
+black>=23.12.1
+flake8>=7.0.0
+mypy>=1.8.0
+pre-commit>=3.6.0

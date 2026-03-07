@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hardware Setup - JARVIS Builder's Handbook</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-robot"></i>
+                <span>JARVIS Builder's Handbook</span>
+            </div>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link"><i class="fas fa-home"></i> Home</a>
+                <a href="architecture.html" class="nav-link"><i class="fas fa-project-diagram"></i> Architecture</a>
+                <a href="hardware.html" class="nav-link active"><i class="fas fa-microchip"></i> Hardware</a>
+                <a href="software.html" class="nav-link"><i class="fas fa-code"></i> Software</a>
+                <a href="code-library.html" class="nav-link"><i class="fas fa-book-open"></i> Code Library</a>
+                <a href="roadmap.html" class="nav-link"><i class="fas fa-map"></i> Roadmap</a>
+                <a href="alignment.html" class="nav-link"><i class="fas fa-shield-alt"></i> AI Alignment</a>
+                <a href="troubleshooting.html" class="nav-link"><i class="fas fa-wrench"></i> Troubleshooting</a>
+            </div>
+            <button class="theme-toggle" id="themeToggle"><i class="fas fa-moon"></i></button>
+        </div>
+    </nav>
+
+    <section class="page-header">
+        <div class="container">
+            <h1><i class="fas fa-microchip"></i> Hardware Setup</h1>
+            <p>Build your ESP32-powered JARVIS hardware interface</p>
+        </div>
+    </section>
+
+    <section class="content-section">
+        <div class="container">
+            <h2 class="section-title">Complete Hardware Guide</h2>
+            
+            <div class="hardware-options">
+                <div class="hardware-card">
+                    <div class="hardware-badge basic">Basic</div>
+                    <h3>🔵 Basic JARVIS Hardware</h3>
+                    <p class="hardware-price">~$25 • 2 hours build time</p>
+                    <ul class="hardware-features">
+                        <li><i class="fas fa-check"></i> Physical wake button</li>
+                        <li><i class="fas fa-check"></i> WS2812 LED ring (status)</li>
+                        <li><i class="fas fa-check"></i> Hardware kill switch</li>
+                        <li><i class="fas fa-check"></i> USB serial communication</li>
+                    </ul>
+                    <a href="#basic-build" class="btn btn-primary">Build Guide</a>
+                </div>
+
+                <div class="hardware-card featured">
+                    <div class="hardware-badge advanced">Advanced</div>
+                    <h3>🚀 Advanced JARVIS Hardware</h3>
+                    <p class="hardware-price">~$110 • 8 hours build time</p>
+                    <ul class="hardware-features">
+                        <li><i class="fas fa-check"></i> On-device wake word (TFLite)</li>
+                        <li><i class="fas fa-check"></i> IMU gesture recognition</li>
+                        <li><i class="fas fa-check"></i> 6+ sensor fusion</li>
+                        <li><i class="fas fa-check"></i> MQTT IoT hub</li>
+                        <li><i class="fas fa-check"></i> Servo/relay control</li>
+                        <li><i class="fas fa-check"></i> OLED display</li>
+                        <li><i class="fas fa-check"></i> OTA updates</li>
+                    </ul>
+                    <a href="#advanced-build" class="btn btn-primary">Build Guide</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="basic-build" class="content-section alt-bg">
+        <div class="container">
+            <h2 class="section-title">Basic JARVIS Hardware Build</h2>
+            
+            <div class="bom-section">
+                <h3><i class="fas fa-shopping-cart"></i> Bill of Materials (BOM)</h3>
+                <table class="bom-table">
+                    <thead>
+                        <tr>
+                            <th>Component</th>
+                            <th>Specification</th>
+                            <th>Qty</th>
+                            <th>Est. Price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>ESP32 DevKit</td>
+                            <td>ESP32-WROOM-32 (30-pin)</td>
+                            <td>1</td>
+                            <td>$8</td>
+                        </tr>
+                        <tr>
+                            <td>LED Ring</td>
+                            <td>WS2812B 12-LED Ring</td>
+                            <td>1</td>
+                            <td>$5</td>
+                        </tr>
+                        <tr>
+                            <td>Push Button</td>
+                            <td>12mm Momentary Switch</td>
+                            <td>2</td>
+                            <td>$2</td>
+                        </tr>
+                        <tr>
+                            <td>Resistors</td>
+                            <td>10kΩ (pull-up)</td>
+                            <td>2</td>
+                            <td>$1</td>
+                        </tr>
+                        <tr>
+                            <td>Breadboard</td>
+                            <td>830-point</td>
+                            <td>1</td>
+                            <td>$4</td>
+                        </tr>
+                        <tr>
+                            <td>Jumper Wires</td>
+                            <td>Male-to-Male</td>
+                            <td>10</td>
+                            <td>$3</td>
+                        </tr>
+                        <tr>
+                            <td>USB Cable</td>
+                            <td>Micro-USB (data)</td>
+                            <td>1</td>
+                            <td>$2</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="wiring-section">
+                <h3><i class="fas fa-plug"></i> Wiring Diagram</h3>
+                <div class="wiring-diagram">
+                    <pre><code>ESP32 DevKit (30-pin) Connections:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+WS2812B LED Ring:
+  DIN  → GPIO 25 (ESP32)
+  VCC  → 5V (ESP32)
+  GND  → GND (ESP32)
+
+Wake Button:
+  Pin 1 → GPIO 4 (ESP32)
+  Pin 2 → GND (ESP32)
+  (with 10kΩ pull-up to 3.3V)
+
+Kill Switch:
+  Pin 1 → GPIO 5 (ESP32)
+  Pin 2 → GND (ESP32)
+  (with 10kΩ pull-up to 3.3V)
+
+USB Serial:
+  Connect ESP32 to PC via Micro-USB
+
+Pin Summary:
+┌─────────────┬──────────────┐
+│ GPIO 25     │ LED Data     │
+│ GPIO 4      │ Wake Button  │
+│ GPIO 5      │ Kill Switch  │
+│ 5V          │ LED Power    │
+│ GND         │ Common GND   │
+└─────────────┴──────────────┘</code></pre>
+                </div>
+            </div>
+
+            <div class="build-steps">
+                <h3><i class="fas fa-hammer"></i> Build Steps</h3>
+                
+                <div class="step-card">
+                    <div class="step-num">1</div>
+                    <div class="step-content">
+                        <h4>Place ESP32 on Breadboard</h4>
+                        <p>Insert ESP32 DevKit into breadboard, ensuring pins are aligned on both sides.</p>
+                    </div>
+                </div>
+
+                <div class="step-card">
+                    <div class="step-num">2</div>
+                    <div class="step-content">
+                        <h4>Wire WS2812B LED Ring</h4>
+                        <p><strong>DIN</strong> → GPIO 25, <strong>VCC</strong> → 5V, <strong>GND</strong> → GND</p>
+                        <p class="warning"><i class="fas fa-exclamation-triangle"></i> Use 5V for LED power, not 3.3V</p>
+                    </div>
+                </div>
+
+                <div class="step-card">
+                    <div class="step-num">3</div>
+                    <div class="step-content">
+                        <h4>Connect Wake Button</h4>
+                        <p>Button pin 1 → GPIO 4, pin 2 → GND. Add 10kΩ resistor from GPIO 4 to 3.3V (pull-up).</p>
+                    </div>
+                </div>
+
+                <div class="step-card">
+                    <div class="step-num">4</div>
+                    <div class="step-content">
+                        <h4>Connect Kill Switch</h4>
+                        <p>Button pin 1 → GPIO 5, pin 2 → GND. Add 10kΩ resistor from GPIO 5 to 3.3V (pull-up).</p>
+                    </div>
+                </div>
+
+                <div class="step-card">
+                    <div class="step-num">5</div>
+                    <div class="step-content">
+                        <h4>Flash Firmware</h4>
+                        <p>Connect USB cable. Install PlatformIO and flash firmware (see Software section).</p>
+                    </div>
+                </div>
+
+                <div class="step-card">
+                    <div class="step-num">6</div>
+                    <div class="step-content">
+                        <h4>Test Hardware</h4>
+                        <p>Press wake button → LED should turn blue. Press kill switch → LED should turn red.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="advanced-build" class="content-section">
+        <div class="container">
+            <h2 class="section-title">Advanced JARVIS Hardware Build</h2>
+            
+            <div class="bom-section">
+                <h3><i class="fas fa-shopping-cart"></i> Advanced BOM</h3>
+                <table class="bom-table">
+                    <thead>
+                        <tr>
+                            <th>Component</th>
+                            <th>Specification</th>
+                            <th>Qty</th>
+                            <th>Est. Price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>ESP32 DevKit</td>
+                            <td>ESP32-WROOM-32 (4MB Flash)</td>
+                            <td>1</td>
+                            <td>$10</td>
+                        </tr>
+                        <tr>
+                            <td>I2S Microphone</td>
+                            <td>INMP441 (for wake word)</td>
+                            <td>1</td>
+                            <td>$6</td>
+                        </tr>
+                        <tr>
+                            <td>IMU Sensor</td>
+                            <td>MPU6050 6-axis</td>
+                            <td>1</td>
+                            <td>$4</td>
+                        </tr>
+                        <tr>
+                            <td>OLED Display</td>
+                            <td>0.96" I2C 128x64</td>
+                            <td>1</td>
+                            <td>$8</td>
+                        </tr>
+                        <tr>
+                            <td>LED Ring</td>
+                            <td>WS2812B 24-LED Ring</td>
+                            <td>1</td>
+                            <td>$8</td>
+                        </tr>
+                        <tr>
+                            <td>Servo Motor</td>
+                            <td>SG90 Micro Servo</td>
+                            <td>2</td>
+                            <td>$8</td>
+                        </tr>
+                        <tr>
+                            <td>Relay Module</td>
+                            <td>5V 2-Channel</td>
+                            <td>1</td>
+                            <td>$5</td>
+                        </tr>
+                        <tr>
+                            <td>Temperature Sensor</td>
+                            <td>DHT22</td>
+                            <td>1</td>
+                            <td>$5</td>
+                        </tr>
+                        <tr>
+                            <td>Light Sensor</td>
+                            <td>BH1750</td>
+                            <td>1</td>
+                            <td>$3</td>
+                        </tr>
+                        <tr>
+                            <td>PIR Motion Sensor</td>
+                            <td>HC-SR501</td>
+                            <td>1</td>
+                            <td>$3</td>
+                        </tr>
+                        <tr>
+                            <td>Power Supply</td>
+                            <td>5V 3A adapter</td>
+                            <td>1</td>
+                            <td>$8</td>
+                        </tr>
+                        <tr>
+                            <td>PCB Prototype Board</td>
+                            <td>10x15cm</td>
+                            <td>1</td>
+                            <td>$5</td>
+                        </tr>
+                        <tr>
+                            <td>Enclosure</td>
+                            <td>ABS project box</td>
+                            <td>1</td>
+                            <td>$12</td>
+                        </tr>
+                        <tr>
+                            <td>Misc. Components</td>
+                            <td>Resistors, capacitors, wires</td>
+                            <td>-</td>
+                            <td>$15</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="features-comparison">
+                <h3><i class="fas fa-check-double"></i> Advanced Features</h3>
+                <div class="features-grid">
+                    <div class="feature-box">
+                        <h4><i class="fas fa-microphone"></i> On-Device Wake Word</h4>
+                        <p>TensorFlow Lite model running on ESP32. Train custom wake word using Edge Impulse.</p>
+                        <code>Model: 20KB quantized TFLite<br>Accuracy: 92%<br>Latency: &lt;50ms</code>
+                    </div>
+                    
+                    <div class="feature-box">
+                        <h4><i class="fas fa-hand-paper"></i> Gesture Recognition</h4>
+                        <p>MPU6050 IMU detects hand gestures. 6-axis accelerometer + gyroscope.</p>
+                        <code>Gestures: Wave, Tap, Rotate<br>Sensitivity: Adjustable<br>Sample Rate: 100Hz</code>
+                    </div>
+                    
+                    <div class="feature-box">
+                        <h4><i class="fas fa-network-wired"></i> MQTT IoT Hub</h4>
+                        <p>Control 100+ devices via MQTT. Smart home integration.</p>
+                        <code>Broker: Mosquitto<br>QoS: 0-2<br>Topics: Hierarchical</code>
+                    </div>
+                    
+                    <div class="feature-box">
+                        <h4><i class="fas fa-robot"></i> Actuator Control</h4>
+                        <p>Control servos, relays, motors. Physical automation.</p>
+                        <code>Servos: PWM control<br>Relays: 2-channel 10A<br>Response: &lt;10ms</code>
+                    </div>
+                </div>
+            </div>
+
+            <div class="warning-box">
+                <i class="fas fa-exclamation-triangle"></i>
+                <div>
+                    <h4>Advanced Build Complexity</h4>
+                    <p>This build requires:</p>
+                    <ul>
+                        <li>Soldering skills</li>
+                        <li>ML model training (Edge Impulse)</li>
+                        <li>FreeRTOS programming</li>
+                        <li>MQTT broker setup</li>
+                    </ul>
+                    <p><strong>Recommended:</strong> Complete basic build first, then upgrade incrementally.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="content-section alt-bg">
+        <div class="container">
+            <h2 class="section-title">Firmware Installation</h2>
+            
+            <div class="firmware-steps">
+                <div class="firmware-card">
+                    <h3><i class="fas fa-download"></i> Step 1: Install PlatformIO</h3>
+                    <pre><code># Install PlatformIO CLI
+pip install platformio
+
+# Or use VS Code extension
+# Install "PlatformIO IDE" extension</code></pre>
+                </div>
+
+                <div class="firmware-card">
+                    <h3><i class="fas fa-code"></i> Step 2: Prepare Firmware</h3>
+                    <pre><code># Download firmware from Code Library section
+# Or clone repository:
+git clone https://github.com/your-repo/jarvis-esp32-firmware
+
+cd jarvis-esp32-firmware</code></pre>
+                </div>
+
+                <div class="firmware-card">
+                    <h3><i class="fas fa-cog"></i> Step 3: Configure</h3>
+                    <pre><code># Edit platformio.ini
+[env:esp32dev]
+platform = espressif32
+board = esp32dev
+framework = arduino
+
+# Edit src/config.h
+#define LED_PIN 25
+#define WAKE_BUTTON_PIN 4
+#define KILL_SWITCH_PIN 5</code></pre>
+                </div>
+
+                <div class="firmware-card">
+                    <h3><i class="fas fa-upload"></i> Step 4: Flash</h3>
+                    <pre><code># Connect ESP32 via USB
+# Build and upload
+pio run --target upload
+
+# Monitor serial output
+pio device monitor --baud 115200</code></pre>
+                </div>
+            </div>
+
+            <div class="test-section">
+                <h3><i class="fas fa-vial"></i> Hardware Testing</h3>
+                <table class="test-table">
+                    <thead>
+                        <tr>
+                            <th>Test</th>
+                            <th>Action</th>
+                            <th>Expected Result</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Power On</td>
+                            <td>Connect USB</td>
+                            <td>LED ring lights up (white)</td>
+                        </tr>
+                        <tr>
+                            <td>Wake Button</td>
+                            <td>Press wake button</td>
+                            <td>LED turns blue, serial: "WAKE"</td>
+                        </tr>
+                        <tr>
+                            <td>Kill Switch</td>
+                            <td>Press kill switch</td>
+                            <td>LED turns red, serial: "KILL"</td>
+                        </tr>
+                        <tr>
+                            <td>Serial Comm</td>
+                            <td>Send "STATUS" via serial</td>
+                            <td>ESP32 replies with status JSON</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <i class="fas fa-robot"></i>
+                    <span>JARVIS Builder's Handbook</span>
+                </div>
+                <div class="footer-links">
+                    <a href="index.html">Home</a>
+                    <a href="software.html">Software Setup →</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

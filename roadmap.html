@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Development Roadmap - JARVIS Builder's Handbook</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-robot"></i>
+                <span>JARVIS Builder's Handbook</span>
+            </div>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link"><i class="fas fa-home"></i> Home</a>
+                <a href="architecture.html" class="nav-link"><i class="fas fa-project-diagram"></i> Architecture</a>
+                <a href="hardware.html" class="nav-link"><i class="fas fa-microchip"></i> Hardware</a>
+                <a href="software.html" class="nav-link"><i class="fas fa-code"></i> Software</a>
+                <a href="code-library.html" class="nav-link"><i class="fas fa-book-open"></i> Code Library</a>
+                <a href="roadmap.html" class="nav-link active"><i class="fas fa-map"></i> Roadmap</a>
+                <a href="alignment.html" class="nav-link"><i class="fas fa-shield-alt"></i> AI Alignment</a>
+                <a href="troubleshooting.html" class="nav-link"><i class="fas fa-wrench"></i> Troubleshooting</a>
+            </div>
+            <button class="theme-toggle" id="themeToggle"><i class="fas fa-moon"></i></button>
+        </div>
+    </nav>
+
+    <section class="page-header">
+        <div class="container">
+            <h1><i class="fas fa-map"></i> Development Roadmap</h1>
+            <p>Your step-by-step journey to building JARVIS</p>
+        </div>
+    </section>
+
+    <section class="content-section">
+        <div class="container">
+            <div class="roadmap-timeline">
+                <div class="roadmap-phase">
+                    <div class="roadmap-marker">1</div>
+                    <div class="roadmap-content">
+                        <h3>Environment Setup</h3>
+                        <div class="roadmap-meta">
+                            <span class="roadmap-duration"><i class="fas fa-clock"></i> 1-2 hours</span>
+                            <span class="roadmap-difficulty"><i class="fas fa-signal"></i> Easy</span>
+                        </div>
+                        <p>Set up your development environment with Python, dependencies, and ML models.</p>
+                        <ul class="milestone-list">
+                            <li class="milestone-item" data-milestone="python-setup">
+                                <div class="milestone-checkbox"></div>
+                                <span class="milestone-text">Install Python 3.10+</span>
+                            </li>
+                            <li class="milestone-item" data-milestone="venv">
+                                <div class="milestone-checkbox"></div>
+                                <span class="milestone-text">Create virtual environment</span>
+                            </li>
+                            <li class="milestone-item" data-milestone="dependencies">
+                                <div class="milestone-checkbox"></div>
+                                <span class="milestone-text">Install dependencies (pip install -r requirements.txt)</span>
+                            </li>
+                            <li class="milestone-item" data-milestone="models">
+                                <div class="milestone-checkbox"></div>
+                                <span class="milestone-text">Download Whisper and MiniLM models</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="roadmap-phase">
+                    <div class="roadmap-marker">2</div>
+                    <div class="roadmap-content">
+                        <h3>Hardware Build</h3>
+                        <div class="roadmap-meta">
+                            <span class="roadmap-duration"><i class="fas fa-clock"></i> 2-8 hours</span>
+                            <span class="roadmap-difficulty"><i class="fas fa-signal"></i> Medium</span>
+                        </div>
+                        <p>Assemble ESP32 hardware with buttons, LEDs, and sensors.</p>
+                        <ul class="milestone-list">
+                            <li class="milestone-item" data-milestone="bom">
+                                <div class="milestone-checkbox"></div>
+                                <span class="milestone-text">Purchase components from BOM</span>
+                            </li>
+                            <li class="milestone-item" data-milestone="basic-circuit">
+                                <div class="milestone-checkbox"></div>
+                                <span class="milestone-text">Wire basic ESP32 circuit (buttons + LEDs)</span>
+                            </li>
+                            <li class="milestone-item" data-milestone="firmware">
+                                <div class="milestone-checkbox"></div>
+                                <span class="milestone-text">Flash firmware with PlatformIO</span>
+                            </li>
+                            <li class="milestone-item" data-milestone="hw-test">
+                                <div class="milestone-checkbox"></div>
+                                <span class="milestone-text">Test hardware (button press → LED change)</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="roadmap-phase">
+                    <div class="roadmap-marker">3</div>
+                    <div class="roadmap-content">
+                        <h3>Software Configuration</h3>
+                        <div class="roadmap-meta">
+                            <span class="roadmap-duration"><i class="fas fa-clock"></i> 1-2 hours</span>
+                            <span class="roadmap-difficulty"><i class="fas fa-signal"></i> Easy</span>
+                        </div>
+                        <p>Configure JARVIS with API keys and system settings.</p>
+                        <ul class="milestone-list">
+                            <li class="milestone-item" data-milestone="config-file">
+                                <div class="milestone-checkbox"></div>
+                                <span class="milestone-text">Create config.yaml with settings</span>
+                            </li>
+                            <li class="milestone-item" data-milestone="api-key">
+                                <div class="milestone-checkbox"></div>
+                                <span class="milestone-text">Add OpenAI API key</span>
+                            </li>
+                            <li class="milestone-item" data-milestone="com-port">
+                                <div class="milestone-checkbox"></div>
+                                <span class="milestone-text">Configure ESP32 COM port</span>
+                            </li>
+                            <li class="milestone-item" data-milestone="first-run">
+                                <div class="milestone-checkbox"></div>
+                                <span class="milestone-text">First successful run (python app/main.py)</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="roadmap-phase">
+                    <div class="roadmap-marker">4</div>
+                    <div class="roadmap-content">
+                        <h3>Core Testing</h3>
+                        <div class="roadmap-meta">
+                            <span class="roadmap-duration"><i class="fas fa-clock"></i> 2-4 hours</span>
+                            <span class="roadmap-difficulty"><i class="fas fa-signal"></i> Medium</span>
+                        </div>
+                        <p>Test all major components and voice commands.</p>
+                        <ul class="milestone-list">
+                            <li class="milestone-item" data-milestone="voice-test">
+                                <div class="milestone-checkbox"></div>
+                                <span class="milestone-text">Test voice input (Ctrl+Space → speak)</span>
+                            </li>
+                            <li class="milestone-item" data-milestone="command-test">
+                                <div class="milestone-checkbox"></div>
+                                <span class="milestone-text">Execute simple command ("Open Chrome")</span>
+                            </li>
+                            <li class="milestone-item" data-milestone="memory-test">
+                                <div class="milestone-checkbox"></div>
+                                <span class="milestone-text">Test memory storage and retrieval</span>
+                            </li>
+                            <li class="milestone-item" data-milestone="safety-test">
+                                <div class="milestone-checkbox"></div>
+                                <span class="milestone-text">Verify safety gates and kill switch</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="roadmap-phase">
+                    <div class="roadmap-marker">5</div>
+                    <div class="roadmap-content">
+                        <h3>Advanced Features</h3>
+                        <div class="roadmap-meta">
+                            <span class="roadmap-duration"><i class="fas fa-clock"></i> 4-8 hours</span>
+                            <span class="roadmap-difficulty"><i class="fas fa-signal"></i> Hard</span>
+                        </div>
+                        <p>Add advanced capabilities and optimizations.</p>
+                        <ul class="milestone-list">
+                            <li class="milestone-item" data-milestone="wake-word">
+                                <div class="milestone-checkbox"></div>
+                                <span class="milestone-text">Implement wake word detection</span>
+                            </li>
+                            <li class="milestone-item" data-milestone="custom-tools">
+                                <div class="milestone-checkbox"></div>
+                                <span class="milestone-text">Add custom tools and plugins</span>
+                            </li>
+                            <li class="milestone-item" data-milestone="tts">
+                                <div class="milestone-checkbox"></div>
+                                <span class="milestone-text">Configure TTS (Text-to-Speech)</span>
+                            </li>
+                            <li class="milestone-item" data-milestone="optimization">
+                                <div class="milestone-checkbox"></div>
+                                <span class="milestone-text">Performance optimization and tuning</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <i class="fas fa-robot"></i>
+                    <span>JARVIS Builder's Handbook</span>
+                </div>
+                <div class="footer-links">
+                    <a href="code-library.html">← Code Library</a>
+                    <a href="alignment.html">AI Alignment →</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        // Make milestones clickable
+        document.querySelectorAll('.milestone-item').forEach(item => {
+            item.addEventListener('click', function() {
+                this.classList.toggle('completed');
+                const milestone = this.getAttribute('data-milestone');
+                const isCompleted = this.classList.contains('completed');
+                
+                // Save to localStorage
+                const progress = JSON.parse(localStorage.getItem('jarvis-milestones') || '{}');
+                progress[milestone] = isCompleted;
+                localStorage.setItem('jarvis-milestones', JSON.stringify(progress));
+                
+                // Update global progress
+                if (window.jarvisProgress) {
+                    window.jarvisProgress.updateProgress();
+                }
+            });
+        });
+        
+        // Load saved progress
+        const savedProgress = JSON.parse(localStorage.getItem('jarvis-milestones') || '{}');
+        Object.entries(savedProgress).forEach(([milestone, completed]) => {
+            if (completed) {
+                const item = document.querySelector(`[data-milestone="${milestone}"]`);
+                if (item) item.classList.add('completed');
+            }
+        });
+    </script>
+</body>
+</html>

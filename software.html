@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Software Setup - JARVIS Builder's Handbook</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-robot"></i>
+                <span>JARVIS Builder's Handbook</span>
+            </div>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link"><i class="fas fa-home"></i> Home</a>
+                <a href="architecture.html" class="nav-link"><i class="fas fa-project-diagram"></i> Architecture</a>
+                <a href="hardware.html" class="nav-link"><i class="fas fa-microchip"></i> Hardware</a>
+                <a href="software.html" class="nav-link active"><i class="fas fa-code"></i> Software</a>
+                <a href="code-library.html" class="nav-link"><i class="fas fa-book-open"></i> Code Library</a>
+                <a href="roadmap.html" class="nav-link"><i class="fas fa-map"></i> Roadmap</a>
+                <a href="alignment.html" class="nav-link"><i class="fas fa-shield-alt"></i> AI Alignment</a>
+                <a href="troubleshooting.html" class="nav-link"><i class="fas fa-wrench"></i> Troubleshooting</a>
+            </div>
+            <button class="theme-toggle" id="themeToggle"><i class="fas fa-moon"></i></button>
+        </div>
+    </nav>
+
+    <section class="page-header">
+        <div class="container">
+            <h1><i class="fas fa-code"></i> Software Setup</h1>
+            <p>Complete Python environment and dependency installation</p>
+        </div>
+    </section>
+
+    <section class="content-section">
+        <div class="container">
+            <h2 class="section-title">Installation Guide</h2>
+            
+            <div class="code-category">
+                <h3><i class="fas fa-download"></i> Step 1: Install Python 3.10+</h3>
+                <pre><code># Windows 11
+# Download from python.org
+# Make sure to check "Add Python to PATH"
+
+# Verify installation
+python --version
+# Should output: Python 3.10.x or higher</code></pre>
+            </div>
+
+            <div class="code-category">
+                <h3><i class="fas fa-folder"></i> Step 2: Create Project Directory</h3>
+                <pre><code># Create project folder
+mkdir jarvis-ai
+cd jarvis-ai
+
+# Create virtual environment
+python -m venv venv
+
+# Activate virtual environment
+# Windows:
+venv\Scripts\activate
+# Linux/Mac:
+source venv/bin/activate</code></pre>
+            </div>
+
+            <div class="code-category">
+                <h3><i class="fas fa-box"></i> Step 3: Install Dependencies</h3>
+                <pre><code># Create requirements.txt
+pip install openai>=1.0.0
+pip install whisper
+pip install chromadb
+pip install sentence-transformers
+pip install playwright
+pip install pyautogui
+pip install pyserial
+pip install pyyaml
+pip install fastapi
+pip install uvicorn
+pip install sqlalchemy
+
+# Or use requirements file
+pip install -r requirements.txt</code></pre>
+            </div>
+
+            <div class="code-category">
+                <h3><i class="fas fa-brain"></i> Step 4: Download ML Models</h3>
+                <pre><code># Download Whisper model
+import whisper
+model = whisper.load_model("small")
+
+# Download sentence transformers
+from sentence_transformers import SentenceTransformer
+embedder = SentenceTransformer('all-MiniLM-L6-v2')
+
+# Models will be cached automatically</code></pre>
+            </div>
+
+            <div class="code-category">
+                <h3><i class="fas fa-cog"></i> Step 5: Configuration</h3>
+                <pre><code># Create config.yaml
+cat > config.yaml << EOF
+openai:
+  api_key: "your-openai-api-key-here"
+  model: "gpt-4"
+
+whisper:
+  model: "small"
+  language: "en"
+
+esp32:
+  port: "COM3"  # Windows
+  # port: "/dev/ttyUSB0"  # Linux
+  baud_rate: 115200
+
+memory:
+  chroma_path: "./data/chroma"
+  sqlite_path: "./data/jarvis.db"
+
+safety:
+  permission_level: "yellow"  # green, yellow, red
+  require_confirmation: true
+  audit_logging: true
+EOF</code></pre>
+            </div>
+
+            <div class="code-category">
+                <h3><i class="fas fa-rocket"></i> Step 6: Run JARVIS</h3>
+                <pre><code># Launch JARVIS
+python app/main.py
+
+# System tray icon should appear
+# Press Ctrl+Space to speak
+# Say: "Hello JARVIS"
+
+# Emergency kill: Ctrl+Shift+K</code></pre>
+            </div>
+        </div>
+    </section>
+
+    <section class="content-section alt-bg">
+        <div class="container">
+            <h2 class="section-title">System Requirements</h2>
+            
+            <table class="bom-table">
+                <thead>
+                    <tr>
+                        <th>Component</th>
+                        <th>Minimum</th>
+                        <th>Recommended</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>CPU</strong></td>
+                        <td>Intel i5 / Ryzen 5 (6 cores)</td>
+                        <td>Intel i7 / Ryzen 7 (8+ cores)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>RAM</strong></td>
+                        <td>16 GB</td>
+                        <td>32 GB</td>
+                    </tr>
+                    <tr>
+                        <td><strong>GPU</strong></td>
+                        <td>4 GB VRAM (for Whisper)</td>
+                        <td>8 GB VRAM</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Storage</strong></td>
+                        <td>20 GB free</td>
+                        <td>50 GB SSD</td>
+                    </tr>
+                    <tr>
+                        <td><strong>OS</strong></td>
+                        <td>Windows 11 / Linux</td>
+                        <td>Windows 11 Pro</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <i class="fas fa-robot"></i>
+                    <span>JARVIS Builder's Handbook</span>
+                </div>
+                <div class="footer-links">
+                    <a href="hardware.html">← Hardware</a>
+                    <a href="code-library.html">Code Library →</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

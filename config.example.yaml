@@ -1,0 +1,172 @@
+# JARVIS Configuration
+# Copy this file to config.yaml and edit with your settings
+
+# Application
+app:
+  name: "JARVIS"
+  version: "1.0.0-mvp"
+  log_level: "INFO"  # DEBUG, INFO, WARNING, ERROR
+  data_dir: "./data"
+  models_dir: "./models"
+
+# Audio Input
+audio:
+  sample_rate: 16000
+  channels: 1
+  chunk_duration_ms: 30
+  silence_timeout_ms: 1500
+  vad_aggressiveness: 3  # 0-3, higher = more aggressive silence detection
+  device_index: null  # null = default microphone
+
+# Speech-to-Text (Whisper)
+stt:
+  model: "small"  # tiny, base, small, medium, large
+  language: "en"
+  device: "cuda"  # cuda, cpu
+  compute_type: "float16"  # float16, int8, float32
+  beam_size: 5
+  vad_filter: true
+
+# Local NLU Router
+router:
+  type: "rule_based"  # rule_based, local_llm
+  confidence_threshold: 0.7
+  local_llm_model: null  # "phi-3-mini-4bit" if using local LLM router
+  routing_policy_file: "router/routing_policy.yaml"
+
+# Cloud LLM (for reasoning/planning)
+cloud_llm:
+  provider: "openai"  # openai, anthropic
+  model: "gpt-4-turbo-preview"
+  api_key: "YOUR_API_KEY_HERE"  # REQUIRED - get from https://platform.openai.com
+  api_base: null  # Optional custom endpoint
+  temperature: 0.7
+  max_tokens: 4096
+  timeout: 60
+
+# Local Planning (simple tasks)
+local_planner:
+  enabled: true
+  max_steps: 5
+
+# Memory System
+memory:
+  # Vector Database (Chroma)
+  vector_db:
+    persist_directory: "./data/vectordb"
+    collection_name: "jarvis_memory"
+    
+  # Embeddings
+  embeddings:
+    model: "sentence-transformers/all-MiniLM-L6-v2"
+    device: "cpu"
+  
+  # Relational Database (SQLite)
+  relational_db:
+    path: "./data/jarvis.db"
+  
+  # Memory policy
+  auto_save_facts: true
+  min_confidence_to_save: 0.8
+  max_memory_nodes: 10000
+
+# Text-to-Speech
+tts:
+  engine: "coqui"  # coqui, pyttsx3, openai
+  coqui_model: "tts_models/en/ljspeech/tacotron2-DDC"
+  voice_speed: 1.0
+  openai_voice: "alloy"  # If using OpenAI TTS
+
+# Tools
+tools:
+  manifest_file: "tools/tool_manifest.json"
+  
+  # OS Adapter
+  os_adapter:
+    enabled: true
+    powershell_timeout: 30
+  
+  # Windows UI Automation
+  uia:
+    enabled: true
+    wait_timeout: 10
+  
+  # Browser Automation (Playwright)
+  playwright:
+    enabled: true
+    browser: "chromium"  # chromium, firefox, webkit
+    headless: false
+    timeout: 30000
+  
+  # PyAutoGUI fallback
+  pyautogui:
+    enabled: true
+    pause: 0.5  # seconds between actions
+    failsafe: true  # Move mouse to corner to abort
+
+# Permission System
+permissions:
+  policy_file: "agent/policy_gate.py"
+  require_confirmation_for_ask: true
+  auto_deny_dangerous: true
+  action_preview_timeout: 15  # seconds to show preview
+
+# Evaluator
+evaluator:
+  verify_postconditions: true
+  max_retries: 2
+  retry_delay: 2  # seconds
+
+# MCU (ESP32)
+mcu:
+  enabled: true
+  serial_port: "COM3"  # Windows: COMx, Linux: /dev/ttyUSBx
+  baud_rate: 115200
+  timeout: 1.0
+  heartbeat_interval: 5  # seconds
+  reconnect_attempts: 3
+  reconnect_delay: 2  # seconds
+
+# Hotkeys
+hotkeys:
+  push_to_talk: "ctrl+space"
+  kill_switch: "ctrl+shift+k"
+  open_console: "ctrl+shift+j"
+  mute_toggle: "ctrl+shift+m"
+
+# UI
+ui:
+  tray_icon: true
+  action_preview: true
+  status_overlay: false  # Floating status window
+  console_on_start: false
+
+# Logging
+logging:
+  audit_log: "./logs/audit.log"
+  error_log: "./logs/errors.log"
+  conversation_log: "./logs/conversations.log"
+  max_log_size_mb: 100
+  backup_count: 5
+  console_output: true
+
+# Security
+security:
+  encrypt_logs: false
+  store_audio: false  # Save recorded audio for debugging
+  audio_retention_days: 7
+  use_windows_credential_manager: false
+
+# Performance
+performance:
+  async_tool_execution: true
+  max_concurrent_tools: 3
+  model_cache_size: 2  # GB
+  vector_search_top_k: 5
+
+# Development
+development:
+  debug_mode: false
+  mock_cloud_llm: false
+  mock_tools: false
+  save_intermediate_data: false

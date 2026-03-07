@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Troubleshooting - JARVIS Builder's Handbook</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-robot"></i>
+                <span>JARVIS Builder's Handbook</span>
+            </div>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link"><i class="fas fa-home"></i> Home</a>
+                <a href="architecture.html" class="nav-link"><i class="fas fa-project-diagram"></i> Architecture</a>
+                <a href="hardware.html" class="nav-link"><i class="fas fa-microchip"></i> Hardware</a>
+                <a href="software.html" class="nav-link"><i class="fas fa-code"></i> Software</a>
+                <a href="code-library.html" class="nav-link"><i class="fas fa-book-open"></i> Code Library</a>
+                <a href="roadmap.html" class="nav-link"><i class="fas fa-map"></i> Roadmap</a>
+                <a href="alignment.html" class="nav-link"><i class="fas fa-shield-alt"></i> AI Alignment</a>
+                <a href="troubleshooting.html" class="nav-link active"><i class="fas fa-wrench"></i> Troubleshooting</a>
+            </div>
+            <button class="theme-toggle" id="themeToggle"><i class="fas fa-moon"></i></button>
+        </div>
+    </nav>
+
+    <section class="page-header">
+        <div class="container">
+            <h1><i class="fas fa-wrench"></i> Troubleshooting & FAQ</h1>
+            <p>Common issues and solutions</p>
+        </div>
+    </section>
+
+    <section class="content-section">
+        <div class="container">
+            <h2 class="section-title">Common Issues</h2>
+
+            <div class="code-category">
+                <h3><i class="fas fa-microphone-slash"></i> Voice Input Not Working</h3>
+                <div class="faq-item">
+                    <h4>Problem: Whisper not recognizing voice</h4>
+                    <p><strong>Solutions:</strong></p>
+                    <pre><code># 1. Check microphone permissions (Windows)
+Settings → Privacy → Microphone → Allow apps
+
+# 2. Verify PyAudio installation
+pip uninstall pyaudio
+pip install pipwin
+pipwin install pyaudio
+
+# 3. Test microphone manually
+python -c "import pyaudio; p = pyaudio.PyAudio(); print(p.get_default_input_device_info())"
+
+# 4. Check Whisper model
+import whisper
+model = whisper.load_model("small")  # Should download if missing</code></pre>
+                </div>
+            </div>
+
+            <div class="code-category">
+                <h3><i class="fas fa-plug"></i> ESP32 Connection Issues</h3>
+                <div class="faq-item">
+                    <h4>Problem: Serial port not detected</h4>
+                    <p><strong>Solutions:</strong></p>
+                    <pre><code># 1. Install CH340 or CP2102 driver (Windows)
+# Download from manufacturer website
+
+# 2. Check COM port
+# Device Manager → Ports (COM & LPT)
+# Note the COM number (e.g., COM3)
+
+# 3. Update config.yaml
+esp32:
+  port: "COM3"  # Use your COM port
+
+# 4. Test serial connection
+python -m serial.tools.miniterm COM3 115200
+
+# 5. Re-flash firmware if needed
+cd esp32_firmware
+pio run --target upload</code></pre>
+                </div>
+            </div>
+
+            <div class="code-category">
+                <h3><i class="fas fa-exclamation-triangle"></i> Import Errors</h3>
+                <div class="faq-item">
+                    <h4>Problem: ModuleNotFoundError</h4>
+                    <p><strong>Solutions:</strong></p>
+                    <pre><code># 1. Verify virtual environment is activated
+# Windows:
+venv\Scripts\activate
+# Linux/Mac:
+source venv/bin/activate
+
+# 2. Reinstall dependencies
+pip install -r requirements.txt --upgrade
+
+# 3. Check Python version
+python --version  # Should be 3.10 or higher
+
+# 4. Install missing modules individually
+pip install openai
+pip install chromadb
+pip install sentence-transformers</code></pre>
+                </div>
+            </div>
+
+            <div class="code-category">
+                <h3><i class="fas fa-memory"></i> Out of Memory Errors</h3>
+                <div class="faq-item">
+                    <h4>Problem: Whisper crashes with OOM</h4>
+                    <p><strong>Solutions:</strong></p>
+                    <pre><code># 1. Use smaller Whisper model
+# In config.yaml:
+whisper:
+  model: "tiny"  # Instead of "small" or "base"
+
+# 2. Enable CPU-only mode
+model = whisper.load_model("small", device="cpu")
+
+# 3. Close other applications
+# Free up RAM before running JARVIS
+
+# 4. Increase virtual memory (Windows)
+# Settings → System → About → Advanced system settings
+# → Performance Settings → Advanced → Virtual memory</code></pre>
+                </div>
+            </div>
+
+            <div class="code-category">
+                <h3><i class="fas fa-database"></i> ChromaDB Issues</h3>
+                <div class="faq-item">
+                    <h4>Problem: Vector store errors</h4>
+                    <p><strong>Solutions:</strong></p>
+                    <pre><code># 1. Delete and recreate database
+rm -rf data/chroma/
+# Or on Windows:
+rmdir /s data\chroma
+
+# 2. Update ChromaDB
+pip install chromadb --upgrade
+
+# 3. Check storage path permissions
+# Ensure write access to ./data/ directory
+
+# 4. Use SQLite backend explicitly
+import chromadb
+client = chromadb.PersistentClient(
+    path="./data/chroma",
+    settings=chromadb.Settings(anonymized_telemetry=False)
+)</code></pre>
+                </div>
+            </div>
+
+            <div class="code-category">
+                <h3><i class="fas fa-key"></i> OpenAI API Errors</h3>
+                <div class="faq-item">
+                    <h4>Problem: Authentication failed</h4>
+                    <p><strong>Solutions:</strong></p>
+                    <pre><code># 1. Check API key format
+# Should start with "sk-"
+# Get from: https://platform.openai.com/api-keys
+
+# 2. Update config.yaml
+openai:
+  api_key: "sk-your-actual-key-here"
+
+# 3. Set environment variable (alternative)
+export OPENAI_API_KEY="sk-your-key"
+
+# 4. Check billing
+# Ensure account has credits: https://platform.openai.com/account/billing
+
+# 5. Rate limiting
+# Wait 60 seconds if hitting rate limits</code></pre>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="content-section alt-bg">
+        <div class="container">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+
+            <div class="faq-grid">
+                <div class="faq-card">
+                    <h3><i class="fas fa-question-circle"></i> Can I use this without OpenAI API?</h3>
+                    <p>Yes! You can use local LLMs like LLaMA or Mistral instead of GPT-4. The system will be slower but fully offline.</p>
+                </div>
+
+                <div class="faq-card">
+                    <h3><i class="fas fa-question-circle"></i> Do I need a GPU?</h3>
+                    <p>Recommended for Whisper STT (4GB+ VRAM). You can use CPU-only mode but expect 5-10x slower transcription.</p>
+                </div>
+
+                <div class="faq-card">
+                    <h3><i class="fas fa-question-circle"></i> Can I run this on Linux/Mac?</h3>
+                    <p>Yes! Most code is cross-platform. PowerShell tools won't work, but you can use bash equivalents.</p>
+                </div>
+
+                <div class="faq-card">
+                    <h3><i class="fas fa-question-circle"></i> How much does it cost to run?</h3>
+                    <p>Hardware: ~$25-110. API costs: $10-30/month for GPT-4 (depending on usage). Can be $0 with local LLMs.</p>
+                </div>
+
+                <div class="faq-card">
+                    <h3><i class="fas fa-question-circle"></i> Is my data private?</h3>
+                    <p>Local mode: Yes, everything stays on your PC. Cloud mode: Voice/text sent to OpenAI API (check their privacy policy).</p>
+                </div>
+
+                <div class="faq-card">
+                    <h3><i class="fas fa-question-circle"></i> Can I add custom tools?</h3>
+                    <p>Absolutely! See the Code Library section for examples. JARVIS is designed to be extensible.</p>
+                </div>
+
+                <div class="faq-card">
+                    <h3><i class="fas fa-question-circle"></i> What languages are supported?</h3>
+                    <p>Whisper supports 90+ languages. LLM reasoning works best in English but can handle multiple languages.</p>
+                </div>
+
+                <div class="faq-card">
+                    <h3><i class="fas fa-question-circle"></i> How do I update JARVIS?</h3>
+                    <p>Pull latest code, update dependencies (pip install -r requirements.txt --upgrade), and re-flash ESP32 firmware if needed.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="content-section">
+        <div class="container">
+            <h2 class="section-title">Debug Checklist</h2>
+            
+            <table class="test-table">
+                <thead>
+                    <tr>
+                        <th>Component</th>
+                        <th>Check</th>
+                        <th>Expected Result</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Python</td>
+                        <td><code>python --version</code></td>
+                        <td>3.10 or higher</td>
+                    </tr>
+                    <tr>
+                        <td>Virtual Env</td>
+                        <td>Check prompt shows <code>(venv)</code></td>
+                        <td>Environment active</td>
+                    </tr>
+                    <tr>
+                        <td>Dependencies</td>
+                        <td><code>pip list | grep openai</code></td>
+                        <td>Package listed</td>
+                    </tr>
+                    <tr>
+                        <td>Whisper</td>
+                        <td><code>python -c "import whisper"</code></td>
+                        <td>No errors</td>
+                    </tr>
+                    <tr>
+                        <td>ESP32</td>
+                        <td>Check Device Manager / lsusb</td>
+                        <td>COM port visible</td>
+                    </tr>
+                    <tr>
+                        <td>Config</td>
+                        <td>Verify config.yaml exists</td>
+                        <td>File present with API key</td>
+                    </tr>
+                    <tr>
+                        <td>Memory</td>
+                        <td>Check data/chroma directory</td>
+                        <td>Directory created</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="warning-box">
+                <i class="fas fa-life-ring"></i>
+                <div>
+                    <h4>Still Having Issues?</h4>
+                    <p>If you've tried everything and still can't resolve the problem:</p>
+                    <ul>
+                        <li>Check logs in <code>logs/jarvis.log</code></li>
+                        <li>Run with verbose mode: <code>python app/main.py --verbose</code></li>
+                        <li>Review error stack traces carefully</li>
+                        <li>Search GitHub issues for similar problems</li>
+                        <li>Ask the community for help</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <i class="fas fa-robot"></i>
+                    <span>JARVIS Builder's Handbook</span>
+                </div>
+                <div class="footer-links">
+                    <a href="alignment.html">← AI Alignment</a>
+                    <a href="index.html">Home →</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

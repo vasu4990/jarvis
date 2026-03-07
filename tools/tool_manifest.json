@@ -1,0 +1,70 @@
+{
+  "tools": [
+    {
+      "tool_id": "os_adapter",
+      "name": "Windows OS Adapter (PowerShell)",
+      "capabilities": [
+        "open_app",
+        "close_app",
+        "search_files",
+        "list_directory",
+        "get_system_info",
+        "get_time",
+        "get_date",
+        "read_clipboard",
+        "write_clipboard",
+        "screenshot"
+      ],
+      "permission_level_default": "allow",
+      "endpoint": "local",
+      "health": {"status": "ok"}
+    },
+    {
+      "tool_id": "playwright",
+      "name": "Playwright Browser Automation",
+      "capabilities": [
+        "open_browser",
+        "close_browser",
+        "navigate_url",
+        "click_selector",
+        "type_selector",
+        "fill_form",
+        "submit_form",
+        "get_page_content",
+        "screenshot_page"
+      ],
+      "permission_level_default": "allow",
+      "endpoint": "local",
+      "health": {"status": "ok"}
+    },
+    {
+      "tool_id": "uia",
+      "name": "Windows UI Automation",
+      "capabilities": [
+        "find_window",
+        "click_element",
+        "type_into_element",
+        "get_element_text",
+        "list_windows"
+      ],
+      "permission_level_default": "ask",
+      "endpoint": "local",
+      "health": {"status": "ok"}
+    },
+    {
+      "tool_id": "pyautogui",
+      "name": "PyAutoGUI Fallback",
+      "capabilities": [
+        "click_xy",
+        "type_text",
+        "press_key",
+        "hotkey",
+        "move_mouse",
+        "scroll"
+      ],
+      "permission_level_default": "ask",
+      "endpoint": "local",
+      "health": {"status": "ok"}
+    }
+  ]
+}

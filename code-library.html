@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code Library - JARVIS Builder's Handbook</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-robot"></i>
+                <span>JARVIS Builder's Handbook</span>
+            </div>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link"><i class="fas fa-home"></i> Home</a>
+                <a href="architecture.html" class="nav-link"><i class="fas fa-project-diagram"></i> Architecture</a>
+                <a href="hardware.html" class="nav-link"><i class="fas fa-microchip"></i> Hardware</a>
+                <a href="software.html" class="nav-link"><i class="fas fa-code"></i> Software</a>
+                <a href="code-library.html" class="nav-link active"><i class="fas fa-book-open"></i> Code Library</a>
+                <a href="roadmap.html" class="nav-link"><i class="fas fa-map"></i> Roadmap</a>
+                <a href="alignment.html" class="nav-link"><i class="fas fa-shield-alt"></i> AI Alignment</a>
+                <a href="troubleshooting.html" class="nav-link"><i class="fas fa-wrench"></i> Troubleshooting</a>
+            </div>
+            <button class="theme-toggle" id="themeToggle"><i class="fas fa-moon"></i></button>
+        </div>
+    </nav>
+
+    <section class="page-header">
+        <div class="container">
+            <h1><i class="fas fa-book-open"></i> Code Library</h1>
+            <p>Production-ready code templates for your JARVIS implementation</p>
+        </div>
+    </section>
+
+    <section class="content-section">
+        <div class="container">
+            <div class="code-filter">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="input">Input</button>
+                <button class="filter-btn" data-filter="agent">Agent</button>
+                <button class="filter-btn" data-filter="tools">Tools</button>
+                <button class="filter-btn" data-filter="memory">Memory</button>
+                <button class="filter-btn" data-filter="safety">Safety</button>
+            </div>
+
+            <div class="code-category" data-category="input">
+                <h3><i class="fas fa-microphone"></i> Voice Input (Whisper STT)</h3>
+                <div class="code-snippets">
+                    <div class="code-snippet">
+                        <div class="code-snippet-header">
+                            <span class="code-snippet-title">audio_manager.py</span>
+                            <button class="code-copy-btn" onclick="window.jarvisUtils.copyToClipboard(this.nextElementSibling.textContent)">
+                                <i class="fas fa-copy"></i> Copy
+                            </button>
+                        </div>
+                        <p class="code-snippet-desc">Real-time audio capture with VAD (Voice Activity Detection)</p>
+                        <pre><code>import whisper
+import pyaudio
+import numpy as np
+
+class AudioManager:
+    def __init__(self, model_size="small"):
+        self.model = whisper.load_model(model_size)
+        self.audio = pyaudio.PyAudio()
+        self.stream = None
+        
+    def start_listening(self):
+        self.stream = self.audio.open(
+            format=pyaudio.paInt16,
+            channels=1,
+            rate=16000,
+            input=True,
+            frames_per_buffer=1024
+        )
+        
+    def transcribe(self, audio_data):
+        result = self.model.transcribe(
+            audio_data,
+            language="en",
+            fp16=False
+        )
+        return result["text"]</code></pre>
+                    </div>
+                </div>
+            </div>
+
+            <div class="code-category" data-category="agent">
+                <h3><i class="fas fa-brain"></i> Agent Planner</h3>
+                <div class="code-snippets">
+                    <div class="code-snippet">
+                        <div class="code-snippet-header">
+                            <span class="code-snippet-title">planner_cloud.py</span>
+                            <button class="code-copy-btn" onclick="window.jarvisUtils.copyToClipboard(this.nextElementSibling.textContent)">
+                                <i class="fas fa-copy"></i> Copy
+                            </button>
+                        </div>
+                        <p class="code-snippet-desc">GPT-4 powered multi-step task planning</p>
+                        <pre><code>from openai import OpenAI
+
+class CloudPlanner:
+    def __init__(self, api_key):
+        self.client = OpenAI(api_key=api_key)
+        
+    def plan(self, user_query, available_tools):
+        prompt = f"""
+        User request: {user_query}
+        Available tools: {available_tools}
+        
+        Generate a step-by-step plan using the available tools.
+        Return JSON format with: [
+            {{"tool": "tool_name", "args": {{}}}},
+            ...
+        ]
+        """
+        
+        response = self.client.chat.completions.create(
+            model="gpt-4",
+            messages=[{"role": "user", "content": prompt}],
+            temperature=0.7
+        )
+        
+        return response.choices[0].message.content</code></pre>
+                    </div>
+                </div>
+            </div>
+
+            <div class="code-category" data-category="tools">
+                <h3><i class="fas fa-tools"></i> System Tools</h3>
+                <div class="code-snippets">
+                    <div class="code-snippet">
+                        <div class="code-snippet-header">
+                            <span class="code-snippet-title">os_powershell.py</span>
+                            <button class="code-copy-btn" onclick="window.jarvisUtils.copyToClipboard(this.nextElementSibling.textContent)">
+                                <i class="fas fa-copy"></i> Copy
+                            </button>
+                        </div>
+                        <p class="code-snippet-desc">PowerShell command execution for Windows automation</p>
+                        <pre><code>import subprocess
+
+class PowerShellTool:
+    def execute(self, command, timeout=30):
+        try:
+            result = subprocess.run(
+                ["powershell", "-Command", command],
+                capture_output=True,
+                text=True,
+                timeout=timeout
+            )
+            return {
+                "success": result.returncode == 0,
+                "output": result.stdout,
+                "error": result.stderr
+            }
+        except subprocess.TimeoutExpired:
+            return {"success": False, "error": "Timeout"}
+            
+    def launch_app(self, app_name):
+        command = f"Start-Process '{app_name}'"
+        return self.execute(command)</code></pre>
+                    </div>
+                </div>
+            </div>
+
+            <div class="code-category" data-category="memory">
+                <h3><i class="fas fa-database"></i> Vector Memory</h3>
+                <div class="code-snippets">
+                    <div class="code-snippet">
+                        <div class="code-snippet-header">
+                            <span class="code-snippet-title">vector_store.py</span>
+                            <button class="code-copy-btn" onclick="window.jarvisUtils.copyToClipboard(this.nextElementSibling.textContent)">
+                                <i class="fas fa-copy"></i> Copy
+                            </button>
+                        </div>
+                        <p class="code-snippet-desc">ChromaDB vector storage with semantic search</p>
+                        <pre><code>import chromadb
+from sentence_transformers import SentenceTransformer
+
+class VectorStore:
+    def __init__(self, path="./data/chroma"):
+        self.client = chromadb.PersistentClient(path=path)
+        self.collection = self.client.get_or_create_collection("jarvis_memory")
+        self.embedder = SentenceTransformer('all-MiniLM-L6-v2')
+        
+    def store(self, text, metadata=None):
+        embedding = self.embedder.encode(text).tolist()
+        self.collection.add(
+            embeddings=[embedding],
+            documents=[text],
+            metadatas=[metadata or {}],
+            ids=[str(hash(text))]
+        )
+        
+    def search(self, query, n_results=5):
+        query_embedding = self.embedder.encode(query).tolist()
+        results = self.collection.query(
+            query_embeddings=[query_embedding],
+            n_results=n_results
+        )
+        return results["documents"][0]</code></pre>
+                    </div>
+                </div>
+            </div>
+
+            <div class="code-category" data-category="safety">
+                <h3><i class="fas fa-shield-alt"></i> Safety Layer</h3>
+                <div class="code-snippets">
+                    <div class="code-snippet">
+                        <div class="code-snippet-header">
+                            <span class="code-snippet-title">policy_gate.py</span>
+                            <button class="code-copy-btn" onclick="window.jarvisUtils.copyToClipboard(this.nextElementSibling.textContent)">
+                                <i class="fas fa-copy"></i> Copy
+                            </button>
+                        </div>
+                        <p class="code-snippet-desc">3-tier permission system (GREEN/YELLOW/RED)</p>
+                        <pre><code>class PolicyGate:
+    def __init__(self):
+        self.rules = {
+            "green": [  # Auto-approved
+                "search", "read", "display", "calculate"
+            ],
+            "yellow": [  # Requires confirmation
+                "delete", "modify", "send", "install"
+            ],
+            "red": [  # Blocked
+                "format", "system_shutdown", "registry_edit"
+            ]
+        }
+        
+    def check(self, action):
+        for permission, actions in self.rules.items():
+            if any(keyword in action.lower() for keyword in actions):
+                return permission
+        return "yellow"  # Default: require confirmation
+        
+    def approve(self, action):
+        permission = self.check(action)
+        
+        if permission == "green":
+            return True
+        elif permission == "yellow":
+            return self.request_user_approval(action)
+        else:  # red
+            return False</code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <i class="fas fa-robot"></i>
+                    <span>JARVIS Builder's Handbook</span>
+                </div>
+                <div class="footer-links">
+                    <a href="software.html">← Software</a>
+                    <a href="roadmap.html">Roadmap →</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,87 @@
+# Gitignore for JARVIS project
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual environments
+venv/
+ENV/
+env/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Configuration (contains API keys!)
+app/config.yaml
+config.yaml
+
+# Environment files (NEVER upload - contains secrets!)
+.env
+.env.*
+!.env.example
+
+# Data & models
+data/
+models/
+*.db
+*.db-journal
+
+# Logs
+logs/
+*.log
+
+# Audio files (if storing recordings)
+*.wav
+*.mp3
+*.flac
+
+# Temporary files
+*.tmp
+*.bak
+*.cache
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ESP32
+esp32_firmware/.pio/
+esp32_firmware/.vscode/
+esp32_firmware/lib/
+esp32_firmware/test/
+
+# Playwright
+.playwright/
+playwright-report/
+test-results/
+
+# PyInstaller
+*.spec
+
+# Distribution
+*.tar.gz
+*.zip

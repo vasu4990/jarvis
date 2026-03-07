@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AGI Research Portal - JARVIS</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            width: 100%;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .subtitle {
+            font-size: 1.25rem;
+            opacity: 0.9;
+        }
+
+        .paths-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .path-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .path-card:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .path-number {
+            font-size: 3rem;
+            font-weight: bold;
+            opacity: 0.3;
+            margin-bottom: 1rem;
+        }
+
+        .path-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .path-description {
+            opacity: 0.9;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .path-status {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            font-size: 0.875rem;
+        }
+
+        .resources {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2rem;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .resources h2 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .resource-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+
+        .resource-link {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            text-decoration: none;
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        .resource-link:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateX(10px);
+        }
+
+        .resource-icon {
+            font-size: 2rem;
+        }
+
+        .resource-info h3 {
+            font-size: 1.125rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .resource-info p {
+            font-size: 0.875rem;
+            opacity: 0.8;
+        }
+
+        .back-button {
+            display: inline-block;
+            margin-top: 2rem;
+            padding: 1rem 2rem;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50px;
+            text-decoration: none;
+            color: white;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .back-button:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.05);
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .paths-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .resource-list {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🧠 AGI Research Portal</h1>
+            <p class="subtitle">Your Journey to Artificial General Intelligence</p>
+        </header>
+
+        <div class="paths-grid">
+            <div class="path-card">
+                <div class="path-number">1</div>
+                <div class="path-title">🌍 World Models</div>
+                <div class="path-description">
+                    Build agents that understand physics, causality, and how the world works. Implement VAEs, RSSMs, and Dreamer architecture.
+                </div>
+                <span class="path-status">Research Path</span>
+            </div>
+
+            <div class="path-card">
+                <div class="path-number">2</div>
+                <div class="path-title">🔄 Continual Learning</div>
+                <div class="path-description">
+                    Solve catastrophic forgetting. Learn new tasks without losing old knowledge. Implement EWC, PackNet, and Progressive Neural Networks.
+                </div>
+                <span class="path-status">Research Path</span>
+            </div>
+
+            <div class="path-card">
+                <div class="path-number">3</div>
+                <div class="path-title">🧮 Reasoning & Planning</div>
+                <div class="path-description">
+                    Go beyond LLM pattern matching. Implement symbolic reasoning, MCTS, AlphaZero-style planners, and neurosymbolic systems.
+                </div>
+                <span class="path-status">Research Path</span>
+            </div>
+
+            <div class="path-card">
+                <div class="path-number">4</div>
+                <div class="path-title">🗣️ Grounded Language</div>
+                <div class="path-description">
+                    Connect language to real-world actions and perception. Implement embodied agents, vision-language models, and instruction following.
+                </div>
+                <span class="path-status">Research Path</span>
+            </div>
+
+            <div class="path-card">
+                <div class="path-number">5</div>
+                <div class="path-title">🎓 Meta-Learning</div>
+                <div class="path-description">
+                    Build systems that learn how to learn. Implement MAML, Reptile, few-shot learning, and neural architecture search.
+                </div>
+                <span class="path-status">Research Path</span>
+            </div>
+        </div>
+
+        <div class="resources">
+            <h2>📚 Research Resources</h2>
+            <div class="resource-list">
+                <a href="../AGI_IMPLEMENTATION_ROADMAP.md" class="resource-link" target="_blank">
+                    <div class="resource-icon">🗺️</div>
+                    <div class="resource-info">
+                        <h3>Implementation Roadmap</h3>
+                        <p>8-week plans for each path</p>
+                    </div>
+                </a>
+
+                <a href="../AGI_STARTER_KIT.md" class="resource-link" target="_blank">
+                    <div class="resource-icon">🎒</div>
+                    <div class="resource-info">
+                        <h3>Starter Kit</h3>
+                        <p>Code templates & baselines</p>
+                    </div>
+                </a>
+
+                <a href="../AGI_RESEARCH_PATH.md" class="resource-link" target="_blank">
+                    <div class="resource-icon">🔬</div>
+                    <div class="resource-info">
+                        <h3>Research Path</h3>
+                        <p>How to pursue AGI research</p>
+                    </div>
+                </a>
+
+                <a href="../ARCHITECTURE.md" class="resource-link" target="_blank">
+                    <div class="resource-icon">🏗️</div>
+                    <div class="resource-info">
+                        <h3>System Architecture</h3>
+                        <p>JARVIS technical design</p>
+                    </div>
+                </a>
+
+                <a href="../START_HERE.md" class="resource-link" target="_blank">
+                    <div class="resource-icon">🚀</div>
+                    <div class="resource-info">
+                        <h3>Start Here</h3>
+                        <p>Complete project overview</p>
+                    </div>
+                </a>
+
+                <a href="../INDEX.md" class="resource-link" target="_blank">
+                    <div class="resource-icon">📖</div>
+                    <div class="resource-info">
+                        <h3>Documentation Index</h3>
+                        <p>All guides and docs</p>
+                    </div>
+                </a>
+            </div>
+
+            <a href="../web_dashboard/index.html" class="back-button">← Back to Dashboard</a>
+        </div>
+    </div>
+</body>
+</html>

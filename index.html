@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JARVIS Builder's Handbook - Complete AI Assistant Implementation Guide</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-robot"></i>
+                <span>JARVIS Builder's Handbook</span>
+            </div>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link active"><i class="fas fa-home"></i> Home</a>
+                <a href="architecture.html" class="nav-link"><i class="fas fa-project-diagram"></i> Architecture</a>
+                <a href="hardware.html" class="nav-link"><i class="fas fa-microchip"></i> Hardware</a>
+                <a href="software.html" class="nav-link"><i class="fas fa-code"></i> Software</a>
+                <a href="code-library.html" class="nav-link"><i class="fas fa-book-open"></i> Code Library</a>
+                <a href="roadmap.html" class="nav-link"><i class="fas fa-map"></i> Roadmap</a>
+                <a href="alignment.html" class="nav-link"><i class="fas fa-shield-alt"></i> AI Alignment</a>
+                <a href="troubleshooting.html" class="nav-link"><i class="fas fa-wrench"></i> Troubleshooting</a>
+            </div>
+            <button class="theme-toggle" id="themeToggle">
+                <i class="fas fa-moon"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-badge">
+                <span class="badge-icon">🤖</span>
+                <span>Complete Implementation Guide</span>
+            </div>
+            <h1 class="hero-title">Build Your Own <span class="gradient-text">JARVIS AI System</span></h1>
+            <p class="hero-subtitle">A comprehensive, production-ready guide to creating an advanced desktop AI assistant with voice control, hardware integration, multi-modal reasoning, and proper AI alignment.</p>
+            
+            <div class="hero-stats">
+                <div class="stat-card">
+                    <div class="stat-number">60+</div>
+                    <div class="stat-label">Python Files</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">15K+</div>
+                    <div class="stat-label">Lines of Code</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">8</div>
+                    <div class="stat-label">Core Components</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">100%</div>
+                    <div class="stat-label">Open Source</div>
+                </div>
+            </div>
+
+            <div class="hero-actions">
+                <a href="roadmap.html" class="btn btn-primary">
+                    <i class="fas fa-rocket"></i> Start Building
+                </a>
+                <a href="architecture.html" class="btn btn-secondary">
+                    <i class="fas fa-book"></i> Learn Architecture
+                </a>
+            </div>
+
+            <div class="progress-tracker">
+                <div class="progress-header">
+                    <span>Your Progress</span>
+                    <span id="progressPercent">0%</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Grid -->
+    <section class="features">
+        <div class="container">
+            <h2 class="section-title">What You'll Build</h2>
+            <p class="section-subtitle">A complete JARVIS-like AI assistant with advanced capabilities</p>
+
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-microphone"></i></div>
+                    <h3>Voice Control</h3>
+                    <p>Local Whisper STT with VAD, push-to-talk hotkeys, and natural language understanding</p>
+                    <ul class="feature-list">
+                        <li>Offline speech recognition</li>
+                        <li>Voice activity detection</li>
+                        <li>Multi-language support</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-brain"></i></div>
+                    <h3>Hybrid AI Reasoning</h3>
+                    <p>Local + cloud LLM routing, multi-step planning, and autonomous task execution</p>
+                    <ul class="feature-list">
+                        <li>GPT-4 cloud reasoning</li>
+                        <li>Local LLaMA fallback</li>
+                        <li>Tool orchestration</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-microchip"></i></div>
+                    <h3>ESP32 Hardware</h3>
+                    <p>Physical wake button, LED status indicators, kill switch, and gesture control</p>
+                    <ul class="feature-list">
+                        <li>Wake word detection</li>
+                        <li>RGB LED feedback</li>
+                        <li>IMU gestures</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-tools"></i></div>
+                    <h3>Multi-Modal Tools</h3>
+                    <p>PowerShell, Playwright web automation, PyAutoGUI, file operations, and more</p>
+                    <ul class="feature-list">
+                        <li>System control</li>
+                        <li>Web automation</li>
+                        <li>File management</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-database"></i></div>
+                    <h3>Persistent Memory</h3>
+                    <p>Chroma vector DB, MiniLM embeddings, SQLite indexing, and semantic search</p>
+                    <ul class="feature-list">
+                        <li>Long-term memory</li>
+                        <li>Context retrieval</li>
+                        <li>Personal knowledge</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
+                    <h3>AI Alignment & Safety</h3>
+                    <p>3-tier permission system, action evaluation, audit logging, and kill switch</p>
+                    <ul class="feature-list">
+                        <li>Permission gating</li>
+                        <li>Risk assessment</li>
+                        <li>Audit trails</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-comments"></i></div>
+                    <h3>Natural Interaction</h3>
+                    <p>Context-aware dialogue, personality, Coqui TTS, and multi-turn conversations</p>
+                    <ul class="feature-list">
+                        <li>Natural voice output</li>
+                        <li>Context memory</li>
+                        <li>Personality system</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-window-restore"></i></div>
+                    <h3>System Tray UI</h3>
+                    <p>Minimalist desktop interface, status monitoring, and quick controls</p>
+                    <ul class="feature-list">
+                        <li>Always-on background</li>
+                        <li>Status indicators</li>
+                        <li>Quick settings</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- System Architecture Preview -->
+    <section class="architecture-preview">
+        <div class="container">
+            <h2 class="section-title">System Architecture</h2>
+            <p class="section-subtitle">Understanding the complete JARVIS system</p>
+
+            <div class="architecture-diagram">
+                <div class="arch-layer">
+                    <h4>Input Layer</h4>
+                    <div class="arch-components">
+                        <div class="arch-component">Voice (Whisper)</div>
+                        <div class="arch-component">Keyboard Hotkeys</div>
+                        <div class="arch-component">ESP32 Button</div>
+                    </div>
+                </div>
+                <div class="arch-arrow">↓</div>
+                <div class="arch-layer">
+                    <h4>Processing Layer</h4>
+                    <div class="arch-components">
+                        <div class="arch-component">NLU Router</div>
+                        <div class="arch-component">Hybrid Planner</div>
+                        <div class="arch-component">Memory Retrieval</div>
+                    </div>
+                </div>
+                <div class="arch-arrow">↓</div>
+                <div class="arch-layer">
+                    <h4>Safety Layer</h4>
+                    <div class="arch-components">
+                        <div class="arch-component">Policy Gate</div>
+                        <div class="arch-component">Action Evaluator</div>
+                        <div class="arch-component">Audit Logger</div>
+                    </div>
+                </div>
+                <div class="arch-arrow">↓</div>
+                <div class="arch-layer">
+                    <h4>Execution Layer</h4>
+                    <div class="arch-components">
+                        <div class="arch-component">Tool Orchestrator</div>
+                        <div class="arch-component">System Tools</div>
+                        <div class="arch-component">Web Automation</div>
+                    </div>
+                </div>
+                <div class="arch-arrow">↓</div>
+                <div class="arch-layer">
+                    <h4>Output Layer</h4>
+                    <div class="arch-components">
+                        <div class="arch-component">TTS (Coqui)</div>
+                        <div class="arch-component">UI Updates</div>
+                        <div class="arch-component">LED Feedback</div>
+                    </div>
+                </div>
+            </div>
+
+            <a href="architecture.html" class="btn btn-primary">View Detailed Architecture</a>
+        </div>
+    </section>
+
+    <!-- Quick Start Guide -->
+    <section class="quick-start">
+        <div class="container">
+            <h2 class="section-title">Quick Start</h2>
+            <p class="section-subtitle">Get your JARVIS system running in 4 phases</p>
+
+            <div class="phases-grid">
+                <div class="phase-card">
+                    <div class="phase-number">1</div>
+                    <h3>Setup Environment</h3>
+                    <p>Install Python, dependencies, download ML models</p>
+                    <div class="phase-time"><i class="fas fa-clock"></i> ~30 minutes</div>
+                    <a href="software.html#installation" class="phase-link">View Guide <i class="fas fa-arrow-right"></i></a>
+                </div>
+
+                <div class="phase-card">
+                    <div class="phase-number">2</div>
+                    <h3>Build Hardware</h3>
+                    <p>Assemble ESP32, wire components, flash firmware</p>
+                    <div class="phase-time"><i class="fas fa-clock"></i> ~2 hours</div>
+                    <a href="hardware.html" class="phase-link">View Guide <i class="fas fa-arrow-right"></i></a>
+                </div>
+
+                <div class="phase-card">
+                    <div class="phase-number">3</div>
+                    <h3>Configure System</h3>
+                    <p>Setup config files, API keys, test components</p>
+                    <div class="phase-time"><i class="fas fa-clock"></i> ~1 hour</div>
+                    <a href="software.html#configuration" class="phase-link">View Guide <i class="fas fa-arrow-right"></i></a>
+                </div>
+
+                <div class="phase-card">
+                    <div class="phase-number">4</div>
+                    <h3>Launch & Test</h3>
+                    <p>Run JARVIS, test voice commands, verify tools</p>
+                    <div class="phase-time"><i class="fas fa-clock"></i> ~30 minutes</div>
+                    <a href="software.html#testing" class="phase-link">View Guide <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technology Stack -->
+    <section class="tech-stack">
+        <div class="container">
+            <h2 class="section-title">Technology Stack</h2>
+            <p class="section-subtitle">Production-grade tools and frameworks</p>
+
+            <div class="tech-categories">
+                <div class="tech-category">
+                    <h3><i class="fas fa-brain"></i> AI/ML</h3>
+                    <div class="tech-tags">
+                        <span class="tech-tag">OpenAI GPT-4</span>
+                        <span class="tech-tag">Whisper (small)</span>
+                        <span class="tech-tag">Coqui TTS</span>
+                        <span class="tech-tag">MiniLM-L6</span>
+                        <span class="tech-tag">ChromaDB</span>
+                        <span class="tech-tag">LangChain</span>
+                    </div>
+                </div>
+
+                <div class="tech-category">
+                    <h3><i class="fas fa-code"></i> Backend</h3>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Python 3.10+</span>
+                        <span class="tech-tag">FastAPI</span>
+                        <span class="tech-tag">SQLAlchemy</span>
+                        <span class="tech-tag">PyAudio</span>
+                        <span class="tech-tag">pySerial</span>
+                    </div>
+                </div>
+
+                <div class="tech-category">
+                    <h3><i class="fas fa-microchip"></i> Hardware</h3>
+                    <div class="tech-tags">
+                        <span class="tech-tag">ESP32 DevKit</span>
+                        <span class="tech-tag">PlatformIO</span>
+                        <span class="tech-tag">FreeRTOS</span>
+                        <span class="tech-tag">TensorFlow Lite</span>
+                        <span class="tech-tag">WS2812 LEDs</span>
+                    </div>
+                </div>
+
+                <div class="tech-category">
+                    <h3><i class="fas fa-tools"></i> Automation</h3>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Playwright</span>
+                        <span class="tech-tag">PyAutoGUI</span>
+                        <span class="tech-tag">PowerShell</span>
+                        <span class="tech-tag">Win32 API</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resources -->
+    <section class="resources">
+        <div class="container">
+            <h2 class="section-title">Essential Resources</h2>
+            
+            <div class="resources-grid">
+                <div class="resource-card">
+                    <i class="fas fa-book"></i>
+                    <h3>Documentation</h3>
+                    <p>Complete guides for every component</p>
+                    <a href="architecture.html">Read Docs →</a>
+                </div>
+
+                <div class="resource-card">
+                    <i class="fas fa-code"></i>
+                    <h3>Code Examples</h3>
+                    <p>Ready-to-use Python implementations</p>
+                    <a href="code-library.html">Browse Code →</a>
+                </div>
+
+                <div class="resource-card">
+                    <i class="fas fa-video"></i>
+                    <h3>Video Tutorials</h3>
+                    <p>Step-by-step visual guides</p>
+                    <a href="#" onclick="alert('Coming soon!'); return false;">Watch →</a>
+                </div>
+
+                <div class="resource-card">
+                    <i class="fas fa-comments"></i>
+                    <h3>Community</h3>
+                    <p>Get help and share your build</p>
+                    <a href="#" onclick="alert('Join our Discord/Forum!'); return false;">Join →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <i class="fas fa-robot"></i>
+                    <span>JARVIS Builder's Handbook</span>
+                </div>
+                <div class="footer-links">
+                    <a href="index.html">Home</a>
+                    <a href="architecture.html">Architecture</a>
+                    <a href="roadmap.html">Roadmap</a>
+                    <a href="alignment.html">AI Safety</a>
+                </div>
+                <div class="footer-info">
+                    <p>Built with ❤️ for the AI builder community</p>
+                    <p class="footer-note">⚠️ This is a documentation website. Actual implementation requires Python backend and hardware.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

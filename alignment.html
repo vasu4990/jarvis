@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Alignment & Safety - JARVIS Builder's Handbook</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-robot"></i>
+                <span>JARVIS Builder's Handbook</span>
+            </div>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link"><i class="fas fa-home"></i> Home</a>
+                <a href="architecture.html" class="nav-link"><i class="fas fa-project-diagram"></i> Architecture</a>
+                <a href="hardware.html" class="nav-link"><i class="fas fa-microchip"></i> Hardware</a>
+                <a href="software.html" class="nav-link"><i class="fas fa-code"></i> Software</a>
+                <a href="code-library.html" class="nav-link"><i class="fas fa-book-open"></i> Code Library</a>
+                <a href="roadmap.html" class="nav-link"><i class="fas fa-map"></i> Roadmap</a>
+                <a href="alignment.html" class="nav-link active"><i class="fas fa-shield-alt"></i> AI Alignment</a>
+                <a href="troubleshooting.html" class="nav-link"><i class="fas fa-wrench"></i> Troubleshooting</a>
+            </div>
+            <button class="theme-toggle" id="themeToggle"><i class="fas fa-moon"></i></button>
+        </div>
+    </nav>
+
+    <section class="page-header">
+        <div class="container">
+            <h1><i class="fas fa-shield-alt"></i> AI Alignment & Safety</h1>
+            <p>Building JARVIS with proper safety and ethical guidelines</p>
+        </div>
+    </section>
+
+    <section class="content-section">
+        <div class="container">
+            <h2 class="section-title">Core Safety Principles</h2>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-user-check"></i></div>
+                    <h3>Human Control</h3>
+                    <p>User always has final authority. Hardware kill switch for emergencies.</p>
+                    <ul class="feature-list">
+                        <li>Ctrl+Shift+K emergency stop</li>
+                        <li>Physical kill button on ESP32</li>
+                        <li>Graceful shutdown procedures</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-lock"></i></div>
+                    <h3>Permission Gates</h3>
+                    <p>3-tier system prevents unauthorized actions.</p>
+                    <ul class="feature-list">
+                        <li>GREEN: Auto-approved (safe)</li>
+                        <li>YELLOW: Requires confirmation</li>
+                        <li>RED: Blocked (dangerous)</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-file-alt"></i></div>
+                    <h3>Audit Logging</h3>
+                    <p>Complete transparency and compliance tracking.</p>
+                    <ul class="feature-list">
+                        <li>All actions logged with timestamps</li>
+                        <li>User approval records</li>
+                        <li>Anomaly detection</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-brain"></i></div>
+                    <h3>Explainability</h3>
+                    <p>AI explains its reasoning before acting.</p>
+                    <ul class="feature-list">
+                        <li>Show action plan before execution</li>
+                        <li>Explain tool selection</li>
+                        <li>Provide confidence scores</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-user-shield"></i></div>
+                    <h3>Privacy First</h3>
+                    <p>Sensitive data stays local by default.</p>
+                    <ul class="feature-list">
+                        <li>Local STT processing</li>
+                        <li>Encrypted memory storage</li>
+                        <li>No telemetry collection</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-undo"></i></div>
+                    <h3>Reversibility</h3>
+                    <p>Actions should be undoable when possible.</p>
+                    <ul class="feature-list">
+                        <li>Recycle bin for deletions</li>
+                        <li>Backup before modifications</li>
+                        <li>Undo history tracking</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="content-section alt-bg">
+        <div class="container">
+            <h2 class="section-title">Permission System Details</h2>
+            
+            <div class="code-category">
+                <h3><span class="badge green">GREEN</span> Auto-Approved Actions</h3>
+                <p>Safe, read-only operations that cannot cause harm.</p>
+                <pre><code># Examples of GREEN actions:
+- Search for files
+- Read documents
+- Calculate numbers
+- Display information
+- Play media
+- Open applications (non-admin)
+- Web searches
+- Weather queries</code></pre>
+            </div>
+
+            <div class="code-category">
+                <h3><span class="badge yellow">YELLOW</span> Confirmation Required</h3>
+                <p>Actions with potential side effects require user approval.</p>
+                <pre><code># Examples of YELLOW actions:
+- Delete files (→ Recycle Bin)
+- Modify documents
+- Send emails/messages
+- Install software
+- Create/rename files
+- System setting changes (non-critical)
+- Network requests to new domains
+- Running scripts</code></pre>
+            </div>
+
+            <div class="code-category">
+                <h3><span class="badge red">RED</span> Blocked Actions</h3>
+                <p>Dangerous operations that are always blocked.</p>
+                <pre><code># Examples of RED actions:
+- Format drives
+- Registry edits (critical keys)
+- System32 modifications
+- Firewall rule changes
+- Admin privilege escalation
+- Hardware firmware updates
+- Network security bypasses
+- Permanent data destruction</code></pre>
+            </div>
+        </div>
+    </section>
+
+    <section class="content-section">
+        <div class="container">
+            <h2 class="section-title">Ethical Guidelines</h2>
+            
+            <div class="warning-box">
+                <i class="fas fa-exclamation-triangle"></i>
+                <div>
+                    <h4>Developer Responsibility</h4>
+                    <p>As the builder of an AI system, you are responsible for:</p>
+                    <ul>
+                        <li>Ensuring user privacy and data protection</li>
+                        <li>Implementing proper safety boundaries</li>
+                        <li>Testing thoroughly before deployment</li>
+                        <li>Respecting applicable laws and regulations</li>
+                        <li>Not using JARVIS for harmful purposes</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="design-principles">
+                <h4>Alignment Principles</h4>
+                <ul>
+                    <li><i class="fas fa-check"></i> <strong>Transparency:</strong> Always explain what JARVIS is doing</li>
+                    <li><i class="fas fa-check"></i> <strong>Accountability:</strong> Maintain audit logs for all actions</li>
+                    <li><i class="fas fa-check"></i> <strong>Fairness:</strong> No discrimination or biased behavior</li>
+                    <li><i class="fas fa-check"></i> <strong>Robustness:</strong> Handle edge cases and failures gracefully</li>
+                    <li><i class="fas fa-check"></i> <strong>Privacy:</strong> Minimize data collection and storage</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <i class="fas fa-robot"></i>
+                    <span>JARVIS Builder's Handbook</span>
+                </div>
+                <div class="footer-links">
+                    <a href="roadmap.html">← Roadmap</a>
+                    <a href="troubleshooting.html">Troubleshooting →</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
